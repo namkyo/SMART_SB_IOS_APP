@@ -1,0 +1,6 @@
+framework module Pods_SMART_SB_IOS_APP {
+  umbrella header "Pods-SMART_SB_IOS_APP-umbrella.h"
+
+  export *
+  module * { export * }
+}

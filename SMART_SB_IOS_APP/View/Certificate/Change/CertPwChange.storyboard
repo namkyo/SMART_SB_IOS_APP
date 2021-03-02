@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Cert Pw ChangeVC-->
+        <scene sceneID="m3C-av-RyD">
+            <objects>
+                <viewController storyboardIdentifier="CertPwChangeVC" modalPresentationStyle="overCurrentContext" id="5Uq-WH-rxR" customClass="CertPwChangeVC" customModule="SMART_SB_APP_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dhU-1w-cVh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_image" translatesAutoresizingMaskIntoConstraints="NO" id="wgg-Os-WBO">
+                                <rect key="frame" x="166" y="0.0" width="248" height="220.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인증서 비밀번호 변경" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXY-Ng-twz">
+                                <rect key="frame" x="25" y="74" width="181" height="26.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="변경하실 비밀번호를 입력해 주세요." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FB9-Jv-I6c">
+                                <rect key="frame" x="25" y="110.5" width="364" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vbI-TB-dJi">
+                                <rect key="frame" x="30" y="191" width="354" height="120"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F5l-wp-5Iy">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="9fZ-ea-0f2"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nFr-Kk-jLl">
+                                        <rect key="frame" x="0.0" y="40" width="354" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="l68-CJ-a8E"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRy-Bz-YOU">
+                                        <rect key="frame" x="0.0" y="80" width="354" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="fMV-hV-8w0"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RlF-gu-Jsh">
+                                <rect key="frame" x="214" y="321" width="170" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sQi-Mm-5to">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemGray3Color"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <state key="normal" title="취소">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="press취소Button:" destination="5Uq-WH-rxR" eventType="touchUpInside" id="SX5-o4-DqW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNe-CR-jfj">
+                                        <rect key="frame" x="90" y="0.0" width="80" height="40"/>
+                                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="EuE-WS-OV0"/>
+                                            <constraint firstAttribute="height" constant="40" id="Zfy-dD-O8x"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <state key="normal" title="확인">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="press확인Button:" destination="5Uq-WH-rxR" eventType="touchUpInside" id="xD9-3X-7pJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="sQi-Mm-5to" firstAttribute="width" secondItem="dNe-CR-jfj" secondAttribute="width" id="6KI-92-7oT"/>
+                                    <constraint firstItem="sQi-Mm-5to" firstAttribute="height" secondItem="dNe-CR-jfj" secondAttribute="height" id="MjQ-9A-lfJ"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="47k-it-G16"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="47k-it-G16" firstAttribute="trailing" secondItem="wgg-Os-WBO" secondAttribute="trailing" id="0uI-Mu-Nli"/>
+                            <constraint firstItem="FB9-Jv-I6c" firstAttribute="top" secondItem="sXY-Ng-twz" secondAttribute="bottom" constant="10" id="12M-aY-Cm1"/>
+                            <constraint firstItem="FB9-Jv-I6c" firstAttribute="leading" secondItem="sXY-Ng-twz" secondAttribute="leading" id="3dX-6n-h1X"/>
+                            <constraint firstItem="sXY-Ng-twz" firstAttribute="leading" secondItem="47k-it-G16" secondAttribute="leading" constant="25" id="5vD-TW-5Dj"/>
+                            <constraint firstItem="47k-it-G16" firstAttribute="trailing" secondItem="vbI-TB-dJi" secondAttribute="trailing" constant="30" id="79k-BB-wpO"/>
+                            <constraint firstItem="vbI-TB-dJi" firstAttribute="leading" secondItem="47k-it-G16" secondAttribute="leading" constant="30" id="8uI-39-ajz"/>
+                            <constraint firstItem="RlF-gu-Jsh" firstAttribute="trailing" secondItem="vbI-TB-dJi" secondAttribute="trailing" id="IoZ-9m-vvc"/>
+                            <constraint firstItem="sXY-Ng-twz" firstAttribute="top" secondItem="47k-it-G16" secondAttribute="top" constant="30" id="PqJ-J6-ssb"/>
+                            <constraint firstItem="vbI-TB-dJi" firstAttribute="top" secondItem="FB9-Jv-I6c" secondAttribute="bottom" constant="60" id="UYo-jE-LZk"/>
+                            <constraint firstItem="RlF-gu-Jsh" firstAttribute="top" secondItem="vbI-TB-dJi" secondAttribute="bottom" constant="10" id="hsk-qx-hlx"/>
+                            <constraint firstItem="wgg-Os-WBO" firstAttribute="top" secondItem="dhU-1w-cVh" secondAttribute="top" id="m5L-Y4-AEW"/>
+                            <constraint firstItem="47k-it-G16" firstAttribute="trailing" secondItem="FB9-Jv-I6c" secondAttribute="trailing" constant="25" id="uj3-2L-zIa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="새_비밀번호BaseView" destination="nFr-Kk-jLl" id="YMe-0x-TZP"/>
+                        <outlet property="새_비밀번호_확인BaseView" destination="fRy-Bz-YOU" id="Ebr-NP-jOv"/>
+                        <outlet property="현재_비밀번호BaseView" destination="F5l-wp-5Iy" id="itu-Dm-a3H"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NGs-kH-ijG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="22" y="108"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="back_image" width="248" height="220.5"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   version = "1.3">
+   <BuildAction>
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForRunning = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E67C498025EE74FF00CD56B1"
+               BuildableName = "SMART_SB_IOS_APP.app"
+               BlueprintName = "SMART_SB_IOS_APP"
+               ReferencedContainer = "container:SMART_SB_IOS_APP.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <LaunchAction
+      useCustomWorkingDirectory = "NO"
+      buildConfiguration = "Debug"
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E67C498025EE74FF00CD56B1"
+            BuildableName = "SMART_SB_IOS_APP.app"
+            BlueprintName = "SMART_SB_IOS_APP"
+            ReferencedContainer = "container:SMART_SB_IOS_APP.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </LaunchAction>
+</Scheme>

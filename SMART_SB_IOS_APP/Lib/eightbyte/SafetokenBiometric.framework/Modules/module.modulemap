@@ -1,0 +1,6 @@
+framework module SafetokenBiometric {
+  umbrella header "SafetokenBiometric.h"
+
+  export *
+  module * { export * }
+}

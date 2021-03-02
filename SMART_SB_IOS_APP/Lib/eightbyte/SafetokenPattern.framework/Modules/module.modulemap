@@ -1,0 +1,6 @@
+framework module SafetokenPattern {
+  umbrella header "SafetokenPattern.h"
+
+  export *
+  module * { export * }
+}
