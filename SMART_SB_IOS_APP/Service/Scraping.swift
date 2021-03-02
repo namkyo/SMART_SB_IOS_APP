@@ -31,6 +31,8 @@ class Scraping : NSObject , SASManagerDelegate {
         scrapingcompleteHandler=handler
         //sasManager=SASManager.init()
         sasManager=(SASKeySharpFacotry.createSASManager() as! SASManager)
+        
+        
         sasManager!.delegate=self
         sasManager!.setDebugMode(false)
         
