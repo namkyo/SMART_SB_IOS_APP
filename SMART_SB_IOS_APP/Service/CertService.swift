@@ -61,6 +61,7 @@ class CertService{
     }
     
     func scraping (params:Dictionary<String, Any>,sf:String,ff:String,webView : WKWebView){
+        var resultData : Dictionary<String,String> = [String:String]()
         UIApplication
             .shared
             .CertView(title:"공동인증서수행 스크랩핑",
@@ -77,7 +78,8 @@ class CertService{
                             errcd,errMsg in
                             Log.print("errcd : " + errcd)
                             Log.print("errMsg : " + errMsg)
-                            //DataWebSend().resultWebSend(resultCd: errcd, dicParmas:resultData, resultFunc : sf ,webView: webView)
+                            resultData["msg"]=errMsg
+                            DataWebSend().resultWebSend(resultCd: errcd, dicParmas:resultData, resultFunc : sf ,webView: webView)
                         })
     }
 }

@@ -221,15 +221,15 @@ class Scraping : NSObject , SASManagerDelegate {
                 return
             }
             
-            self.resultData["MINWON_2"]=output
+            self.resultData["MinWon_1"]=output
             break;
         case 2:
             Log.print("2.초본")
-            self.resultData["MINWON_3"]=output
+            self.resultData["MinWon_2"]=output
             break;
         case 3:
             Log.print("3.로그아웃")
-            self.resultData["MINWON_4"]=output
+            self.resultData["MinWon_3"]=output
             break;
         case 4:
             Log.print("4.로그인")
@@ -251,11 +251,8 @@ class Scraping : NSObject , SASManagerDelegate {
                 self.homeScraping(params: self.parameters,cert: self.parameters_cert,rbrNo: result)
             }else{
                 IndicatorView().hideProgress()
-                if errorCode == "80004128" {
-                    self.scrapingcompleteHandler!( "9999",self.resultData)
-                }else{
-                    self.scrapingcompleteHandler!( "0000",self.resultData)
-                }
+                //if errorCode == "80004128" {
+                self.scrapingcompleteHandler!( "0000",self.resultData)
             }
             break;
         case 7:
@@ -276,11 +273,8 @@ class Scraping : NSObject , SASManagerDelegate {
             
             Log.print("스크랩핑 종료")
             IndicatorView().hideProgress()
-            if errorCode == "80004128" {
-                self.scrapingcompleteHandler!( "9999",self.resultData)
-            }else{
-                self.scrapingcompleteHandler!( "0000",self.resultData)
-            }
+            
+            self.scrapingcompleteHandler!( "0000",self.resultData)
             break;
         default:
             Log.print("스크래핑 에러")

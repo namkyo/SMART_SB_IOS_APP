@@ -18,7 +18,7 @@ class DataWebSend{
         DispatchQueue.main.async {
             webView.evaluateJavaScript(data,completionHandler: {
                 (result, error) in
-                Log.print("데이터 송신 ")
+                Log.print("데이터 송신 : \(result)")
             })
         }
     }
