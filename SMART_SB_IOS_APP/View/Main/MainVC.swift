@@ -482,7 +482,7 @@ extension MainVC: WKUIDelegate {
         
         Log.print("일반 이미지 사이즈 : \(imageData.count)")
         let encoder = WebPEncoder()
-        let webpdata = try! encoder.encode(captureImage, config: .preset(.picture, quality: 40))
+        let webpdata = try! encoder.encode(captureImage, config: .preset(.picture, quality: 30))
         
         Log.print("압축 이미지 사이즈 : \(webpdata.count)")
         

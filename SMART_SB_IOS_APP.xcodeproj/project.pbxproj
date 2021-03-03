@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		89F89CB78F0298FCB6CBA835 /* Pods_SMART_SB_IOS_APP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D686BD52F5D2CC0839518B /* Pods_SMART_SB_IOS_APP.framework */; };
+		E677EFC425EF4393008BA231 /* eversafe_1cb013ba-0fe5-4f9d-84b0-73b4b419b2f7.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E677EFBF25EF4392008BA231 /* eversafe_1cb013ba-0fe5-4f9d-84b0-73b4b419b2f7.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E677EFC525EF4393008BA231 /* eversafe_6bfbf1a4-baa6-478a-bc3c-e6c982fbb8ec.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E677EFC025EF4392008BA231 /* eversafe_6bfbf1a4-baa6-478a-bc3c-e6c982fbb8ec.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E677EFC625EF4393008BA231 /* eversafe_ea21bdd1-903e-4e55-b82b-8589104c534c.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E677EFC125EF4392008BA231 /* eversafe_ea21bdd1-903e-4e55-b82b-8589104c534c.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E677EFC725EF4393008BA231 /* eversafe_951d1d38-ed86-41c1-8edf-a1bd3a21dc45.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E677EFC225EF4393008BA231 /* eversafe_951d1d38-ed86-41c1-8edf-a1bd3a21dc45.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E677EFC825EF4393008BA231 /* eversafe_8fd29775-c24d-4bff-a790-8cee419aa122.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E677EFC325EF4393008BA231 /* eversafe_8fd29775-c24d-4bff-a790-8cee419aa122.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E67C498525EE74FF00CD56B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67C498425EE74FF00CD56B1 /* AppDelegate.swift */; };
 		E67C498725EE74FF00CD56B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67C498625EE74FF00CD56B1 /* SceneDelegate.swift */; };
 		E67C498925EE74FF00CD56B1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67C498825EE74FF00CD56B1 /* ViewController.swift */; };
@@ -355,6 +360,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				E677EFC425EF4393008BA231 /* eversafe_1cb013ba-0fe5-4f9d-84b0-73b4b419b2f7.framework in Embed Frameworks */,
+				E677EFC525EF4393008BA231 /* eversafe_6bfbf1a4-baa6-478a-bc3c-e6c982fbb8ec.framework in Embed Frameworks */,
+				E677EFC625EF4393008BA231 /* eversafe_ea21bdd1-903e-4e55-b82b-8589104c534c.framework in Embed Frameworks */,
+				E677EFC725EF4393008BA231 /* eversafe_951d1d38-ed86-41c1-8edf-a1bd3a21dc45.framework in Embed Frameworks */,
+				E677EFC825EF4393008BA231 /* eversafe_8fd29775-c24d-4bff-a790-8cee419aa122.framework in Embed Frameworks */,
 				E67C51C525EE8A4D00CD56B1 /* WebP.framework in Embed Frameworks */,
 				E67C4F7525EE7CD400CD56B1 /* SafetokenBiometric.framework in Embed Frameworks */,
 				E67C4F7325EE7CD300CD56B1 /* Safetoken.framework in Embed Frameworks */,
@@ -369,6 +379,11 @@
 		74D686BD52F5D2CC0839518B /* Pods_SMART_SB_IOS_APP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SMART_SB_IOS_APP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		817DC344E798C71068B3B3BF /* Pods-SMART_SB_IOS_APP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMART_SB_IOS_APP.release.xcconfig"; path = "Target Support Files/Pods-SMART_SB_IOS_APP/Pods-SMART_SB_IOS_APP.release.xcconfig"; sourceTree = "<group>"; };
 		E04B4BB2A8EE1C3551702309 /* Pods-SMART_SB_IOS_APP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMART_SB_IOS_APP.debug.xcconfig"; path = "Target Support Files/Pods-SMART_SB_IOS_APP/Pods-SMART_SB_IOS_APP.debug.xcconfig"; sourceTree = "<group>"; };
+		E677EFBF25EF4392008BA231 /* eversafe_1cb013ba-0fe5-4f9d-84b0-73b4b419b2f7.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "eversafe_1cb013ba-0fe5-4f9d-84b0-73b4b419b2f7.framework"; path = "Eversafe/eversafe_1cb013ba-0fe5-4f9d-84b0-73b4b419b2f7.framework"; sourceTree = "<group>"; };
+		E677EFC025EF4392008BA231 /* eversafe_6bfbf1a4-baa6-478a-bc3c-e6c982fbb8ec.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "eversafe_6bfbf1a4-baa6-478a-bc3c-e6c982fbb8ec.framework"; path = "Eversafe/eversafe_6bfbf1a4-baa6-478a-bc3c-e6c982fbb8ec.framework"; sourceTree = "<group>"; };
+		E677EFC125EF4392008BA231 /* eversafe_ea21bdd1-903e-4e55-b82b-8589104c534c.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "eversafe_ea21bdd1-903e-4e55-b82b-8589104c534c.framework"; path = "Eversafe/eversafe_ea21bdd1-903e-4e55-b82b-8589104c534c.framework"; sourceTree = "<group>"; };
+		E677EFC225EF4393008BA231 /* eversafe_951d1d38-ed86-41c1-8edf-a1bd3a21dc45.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "eversafe_951d1d38-ed86-41c1-8edf-a1bd3a21dc45.framework"; path = "Eversafe/eversafe_951d1d38-ed86-41c1-8edf-a1bd3a21dc45.framework"; sourceTree = "<group>"; };
+		E677EFC325EF4393008BA231 /* eversafe_8fd29775-c24d-4bff-a790-8cee419aa122.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "eversafe_8fd29775-c24d-4bff-a790-8cee419aa122.framework"; path = "Eversafe/eversafe_8fd29775-c24d-4bff-a790-8cee419aa122.framework"; sourceTree = "<group>"; };
 		E67C498125EE74FF00CD56B1 /* SMART_SB_IOS_APP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SMART_SB_IOS_APP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E67C498425EE74FF00CD56B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E67C498625EE74FF00CD56B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -901,6 +916,11 @@
 		E67C497825EE74FF00CD56B1 = {
 			isa = PBXGroup;
 			children = (
+				E677EFBF25EF4392008BA231 /* eversafe_1cb013ba-0fe5-4f9d-84b0-73b4b419b2f7.framework */,
+				E677EFC025EF4392008BA231 /* eversafe_6bfbf1a4-baa6-478a-bc3c-e6c982fbb8ec.framework */,
+				E677EFC325EF4393008BA231 /* eversafe_8fd29775-c24d-4bff-a790-8cee419aa122.framework */,
+				E677EFC225EF4393008BA231 /* eversafe_951d1d38-ed86-41c1-8edf-a1bd3a21dc45.framework */,
+				E677EFC125EF4392008BA231 /* eversafe_ea21bdd1-903e-4e55-b82b-8589104c534c.framework */,
 				E67C51C225EE88B900CD56B1 /* WebP.framework */,
 				E67C4C9D25EE78E400CD56B1 /* SMART_SB_IOS_APP-Bridging-Header.h */,
 				E67C498325EE74FF00CD56B1 /* SMART_SB_IOS_APP */,

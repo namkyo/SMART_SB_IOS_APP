@@ -107,8 +107,8 @@ class CertSignVC: UIViewController {
                             }
                             
                             resultData["password"]=text
-                            resultData["name"]=self.certContent.getSubject()
-                            resultData["validTo"]=self.certContent?.getValidTo2()
+                            resultData["name"]=self.certContent?.getSubject()
+                            resultData["validTo"]=self.certContent?.getValidTo2().replacingOccurrences(of: "-", with: "").replacingOccurrences(of: ".", with: "")
                         }
                         //비밀번호 체크후 비밀번호 검증
                         self.dismiss(animated: true, completion: {

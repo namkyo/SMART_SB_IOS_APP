@@ -43,7 +43,6 @@ class Scraping : NSObject , SASManagerDelegate {
     
     private func minwonScraping01(params:Dictionary<String, Any>,cert:Dictionary<String, String>,sasManager : SASManager?){
         Log.print("민원스크랩핑 보안문자")
-        Log.print("MINWON_1 => "+secureStr())
         sasManager!.run(0, in:secureStr(),asyncMode: true)
     }
     
@@ -52,10 +51,12 @@ class Scraping : NSObject , SASManagerDelegate {
         
         
         var MinWon1: JSON = JSON(params["MinWon_1"] as Any)
+        Log.print("MinWon1 : \(MinWon1)")
+        
         MinWon1["Input"]["주민등록번호"].string=Function.AES256Decrypt(val: MinWon1["Input"]["주민등록번호"].string!)
         MinWon1["Input"]["보안문자"].string=secuerStr
         
-        Log.print("파라미터 : \(MinWon1)")
+        //Log.print("파라미터 : \(MinWon1)")
         
         var MinWon2: JSON = JSON(params["MinWon_2"] as Any)
         MinWon2["Input"]["인증서"]["이름"].string=cert["name"]!
@@ -85,7 +86,6 @@ class Scraping : NSObject , SASManagerDelegate {
         HOME_2["Input"]["인증서"]["비밀번호"].string=Function.AES256Decrypt(val: cert["password"]!)
         
         let HOME_3: JSON = JSON(params["HOME_3"] as Any)
-        
         var HOME_4: JSON = JSON(params["HOME_3"] as Any)
         HOME_4["Input"]["사업자등록번호"].string=rbrNo
         sasManager!.run(7, in: "\(HOME_1)",asyncMode: true)
@@ -156,14 +156,16 @@ class Scraping : NSObject , SASManagerDelegate {
                 return
         }
         guard let output = jsonRaw["Output"] as? [String: Any],
-            let errorCode = output["ErrorCode"] as? String else {
+            let errorCode = output["ErrorCode"] as? String ,
+            let errorMsg = output["ErrorMessage"] as? String  else {
                 //self.scrapingError(index: Int(index), msg: "스크래핑 실패 output error")
             IndicatorView().hideProgress()
                 UIApplication.shared.showAlert(message: "스크래핑 실패 Output error")
                 return
         }
-        Log.print("Output = \(output)")
-        Log.print("errorCode = \(errorCode)")
+        //Log.print("\nOutput = \(Output)")
+        Log.print("\nErrorCode = \(errorCode)")
+        Log.print("\nErrorMsg = \(errorMsg)")
         
         DispatchQueue.main.async {
         switch index {
@@ -241,14 +243,14 @@ class Scraping : NSObject , SASManagerDelegate {
             Log.print("6.자격득실")
             self.resultData["NHIS_3"]=output
             
-            let rbrNo=JSON(output)["Result"]["사업장관리번호"].string
-            Log.print("rbrNo : \(rbrNo)")
-            if rbrNo != nil {
-                //국세청
-                self.homeScraping(params: self.parameters,cert: self.parameters_cert,rbrNo: rbrNo!)
+            
+            if let temp = JSON(output)["Result"]["사업장관리번호"].string {
+                let endIdx: String.Index = temp.index(temp.startIndex, offsetBy: 9)
+                let result = String(temp[...endIdx])
+                Log.print("사업자등록번호 : \(result)")
+                self.homeScraping(params: self.parameters,cert: self.parameters_cert,rbrNo: result)
             }else{
                 IndicatorView().hideProgress()
-                
                 if errorCode == "80004128" {
                     self.scrapingcompleteHandler!( "9999",self.resultData)
                 }else{

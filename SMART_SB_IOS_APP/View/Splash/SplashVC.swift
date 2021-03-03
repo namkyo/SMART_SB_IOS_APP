@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebP
 import SwiftGifOrigin
 class SplashVC: UIViewController {
 
@@ -23,6 +24,8 @@ class SplashVC: UIViewController {
         
         //로딩 gif  이미지 가동
         let imageData = try? Data(contentsOf: Bundle.main.url(forResource: "incoming", withExtension: "gif")!)
+        
+        
         let advTimeGif = UIImage.gif(data: imageData!)
         gifImg!.frame.size = CGSize(width: 40, height: 20)
         gifImg.image = advTimeGif

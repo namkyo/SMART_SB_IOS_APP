@@ -62,13 +62,13 @@ class ResultVC: UIViewController {
             imageView.image = UIImage(data: iod)
             
             //사진 압축
-            guard let imageData = imageView.image!.jpegData(compressionQuality: 0.4) else {
-                return
-            }
-            Log.print("기존 이미지 사이즈 : \(imageData.count)")
+//            guard let imageData = imageView.image!.jpegData(compressionQuality: 0.4) else {
+//                return
+//            }
+//            Log.print("기존 이미지 사이즈 : \(imageData.count)")
             
             let encoder = WebPEncoder()
-            let webpdata = try! encoder.encode(imageView.image!, config: .preset(.picture, quality: 40))
+            let webpdata = try! encoder.encode(imageView.image!, config: .preset(.picture, quality: 30))
             
             Log.print("압축 이미지 사이즈 : \(webpdata.count)")
             
@@ -115,7 +115,7 @@ class ResultVC: UIViewController {
             if let isItem = item["ISSUEDATE"] as? [String:String],
                let isI = isItem["TEXT"] {
                 stackView.addArrangedSubview(setTextView(title: "발급일자", content: isI, isEnabled: true))
-                callbackData["issueDate"] = Function.AES256Encrypt(val:isI.replacingOccurrences(of: "-", with: ""))
+                callbackData["issueDate"] = Function.AES256Encrypt(val:isI.replacingOccurrences(of: "-", with: "").replacingOccurrences(of: ".", with: ""))
             }
             
             // 운전면허증 번호 license number
