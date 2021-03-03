@@ -11,7 +11,7 @@
         <!--ResultVC-->
         <scene sceneID="188-5B-5e4">
             <objects>
-                <viewController storyboardIdentifier="ResultVC" modalPresentationStyle="overCurrentContext" id="oTC-Hk-ea5" customClass="ResultVC" customModule="SMART_SB_IOS_APP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResultVC" modalPresentationStyle="overCurrentContext" id="oTC-Hk-ea5" customClass="ResultVC" customModule="SMART_SB_APP_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iWW-gV-WSJ"/>
                         <viewControllerLayoutGuide type="bottom" id="u1p-qo-IQN"/>
@@ -158,7 +158,7 @@
         <!--OcrVC-->
         <scene sceneID="8Ld-h6-XYu">
             <objects>
-                <viewController storyboardIdentifier="OcrVC" modalPresentationStyle="overCurrentContext" id="krD-H6-7QI" customClass="OcrVC" customModule="SMART_SB_IOS_APP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OcrVC" modalPresentationStyle="overCurrentContext" id="krD-H6-7QI" customClass="OcrVC" customModule="SMART_SB_APP_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rHV-3g-RvF"/>
                         <viewControllerLayoutGuide type="bottom" id="XVc-de-mLB"/>
@@ -208,7 +208,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="next:" destination="krD-H6-7QI" eventType="touchUpInside" id="LqG-Wc-y3s"/>
+                                    <action selector="next:" destination="krD-H6-7QI" eventType="touchUpInside" id="UKp-mI-Z5m"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T08-Hc-tzK">
@@ -222,7 +222,7 @@
                                     <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="cancel:" destination="krD-H6-7QI" eventType="touchUpInside" id="0au-tf-Luf"/>
+                                    <action selector="cancel:" destination="krD-H6-7QI" eventType="touchUpInside" id="7zY-Jj-1ha"/>
                                 </connections>
                             </button>
                         </subviews>

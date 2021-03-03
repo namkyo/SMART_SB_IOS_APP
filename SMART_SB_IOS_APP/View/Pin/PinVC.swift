@@ -85,6 +85,13 @@ class PinVC: UIViewController {
         
         //커스텀 키패드
         spec?.keypadType = self.keypadType //ESKeypadTypeNumericpad
+        
+        if spec?.keypadType == ESKeypadTypeQwerty {
+            
+            spec?.appearenceManager = CustomQwertyAppearenceManager() //[CustomQwertyAppearenceManager new];
+            spec?.layoutManager = CustomQwertyLayoutManager()//[CustomQwertyLayoutManager new];
+        }
+        
         //최대 문자열
         spec?.maxInputLength = maxInputLength
         spec?.lastCharDisplayTime = 0.5
@@ -116,6 +123,9 @@ class PinVC: UIViewController {
         passwordTextField?.becomeFirstResponder()
         
         if !isShowDots {
+            //도트 히든
+            stackView.isHidden=true
+            passwordTextField?.isHidden = isShowDots
             passwordTextField?.translatesAutoresizingMaskIntoConstraints = false
             passwordTextField?.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
             passwordTextField?.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
@@ -202,11 +212,20 @@ extension PinVC: ESSecureTextFieldDelegate {
         }
         //쿼티일때
         if self.keypadType == ESKeypadTypeQwerty {
-            let pin = Function.AES256Encrypt(val: String(utf8String: secureTextField.getPlainText())!)
-            Log.print("pinnum = "+pin)
-            self.dismiss(animated: true, completion: {
-                self.completeHandler?(" ", pin)
-            })
+            // RSA 암호화
+            if self.key != "" {
+                self.dismiss(animated: true, completion: {
+                    self.completeHandler?(" ", secureTextField.encryptedString())
+                })
+            }
+            // SEED 방식
+            else{
+                let pin = Function.AES256Encrypt(val: String(utf8String: secureTextField.getPlainText())!)
+                Log.print("pinnum = "+pin)
+                self.dismiss(animated: true, completion: {
+                    self.completeHandler?(" ", pin)
+                })
+            }
         }
         
     }
@@ -228,7 +247,7 @@ extension PinVC: ESSecureTextFieldDelegate {
         stackView.subviews.forEach { $0.backgroundColor = .lightGray }
         for i in 0..<secureTextField.enteredCharacters() {
             let index = Int(i)
-            stackView.subviews[index].backgroundColor = .cyan
+            stackView.subviews[index].backgroundColor = UIColor(red: 7,green: 46,blue: 94)
         }
         
         // pin max값 입력 시 완료

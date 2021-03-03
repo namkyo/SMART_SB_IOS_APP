@@ -10,6 +10,7 @@ import WebKit
 import Foundation
 import LocalAuthentication
 import MobileCoreServices
+import WebP
 class MainVC: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     let imagePicker: UIImagePickerController! = UIImagePickerController()
     var webView: WKWebView!
@@ -478,8 +479,15 @@ extension MainVC: WKUIDelegate {
         guard let imageData = captureImage.jpegData(compressionQuality: 0.4) else {
             return
         }
+        
+        Log.print("일반 이미지 사이즈 : \(imageData.count)")
+        let encoder = WebPEncoder()
+        let webpdata = try! encoder.encode(captureImage, config: .preset(.picture, quality: 40))
+        
+        Log.print("압축 이미지 사이즈 : \(webpdata.count)")
+        
         //암호화
-        let strBase64 = Function.AES256Encrypt(val: imageData.base64EncodedString(options: .lineLength64Characters))
+        let strBase64 = Function.AES256Encrypt(val: webpdata.base64EncodedString(options: .lineLength64Characters))
         resultData["photoStr"]=strBase64
         self.dismiss(animated: true, completion: {
             DataWebSend().resultWebSend(resultCd: "0000", dicParmas:resultData, resultFunc : self.sussFunc ,webView: self.webView)

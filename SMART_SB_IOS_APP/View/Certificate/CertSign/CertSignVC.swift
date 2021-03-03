@@ -167,7 +167,7 @@ class CertSignVC: UIViewController {
     
     // 비밀번호 체크
     private func checkPassword(index: Int32, text: String) -> Bool {
-        //Log.print("checkPassword : "+Function.AES256Decrypt(val: text))
+        Log.print("checkPassword : "+Function.AES256Decrypt(val: text))
         let data = makeCString(from: Function.AES256Decrypt(val: text))
         let password = SecureData(data: data, length: UInt32(Function.AES256Decrypt(val: text).count))
         let result = certManager.checkCertPassword(Int32(index), currentPassword: Function.AES256Decrypt(val: text))

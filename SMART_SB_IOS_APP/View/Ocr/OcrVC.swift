@@ -18,25 +18,16 @@ class OcrVC: UIViewController {
     var complete:((Dictionary<String,String>) -> Void)? = nil
     var failed:((String,String) -> Void)? = nil
     
-    @IBAction func next(_ sender: Any) {
-            Log.print(message: "ocr next")
-            showCamera()
-    }
     //다음버튼
-//    @IBAction func next(_ sender: Any) {
-//        Log.print(message: "ocr next")
-//        showCamera()
-//    }
-//    //취소버튼
-//    @IBAction func cancel(_ sender: Any) {
-//        self.dismiss(animated: true, completion: {
-//            self.failed!("9997","작업을취소하였습니다")
-//        })
-//    }
+    @IBAction func next(_ sender: Any) {
+        Log.print(message: "ocr next")
+        showCamera()
+    }
+    //취소버튼
     @IBAction func cancel(_ sender: Any) {
-        
-                Log.print(message: "ocr next")
-                showCamera()
+        self.dismiss(animated: true, completion: {
+            self.failed!("9997","작업을취소하였습니다")
+        })
     }
     
     deinit {

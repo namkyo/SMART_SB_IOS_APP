@@ -192,7 +192,7 @@ class CertPwChangeVC: UIViewController {
     
     // 비밀번호 체크
     private func checkPassword(index: Int32, password: ProtectedData) -> Int32 {
-        let result = certManager.checkCertPassword_S(Int32(index), currentPassword: (password as! SecureData))
+        let result = certManager.checkCertPassword_S(Int32(index), currentPassword: password as! SecureData)
         return result
     }
     
