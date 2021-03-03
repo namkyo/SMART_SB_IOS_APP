@@ -12,7 +12,7 @@
         <!--Cert ListVC-->
         <scene sceneID="dwa-s0-KPc">
             <objects>
-                <viewController storyboardIdentifier="CertListVC" modalPresentationStyle="overCurrentContext" id="zeU-yk-KKt" customClass="CertListVC" customModule="SMART_SB_APP_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CertListVC" modalPresentationStyle="overCurrentContext" id="zeU-yk-KKt" customClass="CertListVC" customModule="SMART_SB_IOS_APP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gCd-ZW-EpJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +27,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pC1-Rn-hSH">
-                                <rect key="frame" x="20" y="115.5" width="280" height="412.5"/>
+                                <rect key="frame" x="20" y="115.5" width="280" height="402.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="zeU-yk-KKt" id="kho-CC-Rig"/>
@@ -41,13 +41,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fyd-6z-TAf">
-                                <rect key="frame" x="0.0" y="528" width="320" height="40"/>
+                                <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.18039215689999999" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="82h-ib-rWA"/>
+                                    <constraint firstAttribute="height" constant="50" id="g8c-HY-bsg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15.5"/>
-                                <state key="normal" title="닫기">
+                                <state key="normal" title="닫 기">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>

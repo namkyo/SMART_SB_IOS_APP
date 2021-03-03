@@ -161,21 +161,11 @@ extension CertListVC: UITableViewDelegate, UITableViewDataSource {
                                             cd,result in
                                             Log.print("스크랩핑 완료 : \(cd)")
                                             
-                                            
-//                                            Log.print("MinWon_1: \(result["MinWon_1"])")
-//                                            Log.print("MinWon_2: \(result["MinWon_2"])")
-//                                            Log.print("MinWon_3: \(result["MinWon_3"])")
-//                                            Log.print("NHIS_1: \(result["NHIS_1"])")
-//                                            Log.print("NHIS_2: \(result["NHIS_2"])")
-//                                            Log.print("NHIS_3: \(result["NHIS_3"])")
-//                                            Log.print("NHIS_3: \(result["NHIS_3"])")
-                                            
                                             if cd == "0000"{
                                                 self.dismiss(animated: true, completion: {
                                                     self.complete?(result)
                                                 })
                                             }
-                                            
                                            })
                 }
                 vc.failed = {

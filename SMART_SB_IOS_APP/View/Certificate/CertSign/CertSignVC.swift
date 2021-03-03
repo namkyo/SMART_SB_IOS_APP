@@ -227,6 +227,7 @@ class CertSignVC: UIViewController {
     
     @IBAction func press확인Button(_ sender: Any) {
         //signCert()
+        setupQwertyKeyboard()
     }
     
     @IBAction func pressClose(_ sender: Any) {

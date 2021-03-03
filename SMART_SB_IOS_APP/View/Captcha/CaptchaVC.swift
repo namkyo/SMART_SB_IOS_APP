@@ -34,6 +34,8 @@ class CaptchaVC: UIViewController {
         let color = #colorLiteral(red: 0.7058823529, green: 0.03921568627, blue: 0.03921568627, alpha: 1)
         inputString.attributedPlaceholder = NSAttributedString(string: "보안문자를 입력해주세요.", attributes: [NSAttributedString.Key.foregroundColor: color])
         inputString.textAlignment = .center
+        inputString.layer.borderWidth = 1.0
+        inputString.layer.borderColor = #colorLiteral(red: 0.02745098039, green: 0.1803921569, blue: 0.368627451, alpha: 1)
         
         // TextField 툴바
         let toolbarKeyboard = UIToolbar()
@@ -71,8 +73,8 @@ class CaptchaVC: UIViewController {
     }
     
     @IBAction func pressConfirm(_ sender: Any) {
-        guard inputString.text!.count > 3 else {
-            UIApplication.shared.showAlert(message: "보안문자를 입력해주세요.")
+        guard inputString.text!.count == 6 else {
+            UIApplication.shared.showAlert(message: "보안문자 6자리를 입력해주세요.")
             return
         }
         

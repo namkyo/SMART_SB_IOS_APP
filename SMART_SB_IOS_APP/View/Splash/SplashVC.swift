@@ -38,6 +38,7 @@ class SplashVC: UIViewController {
         //Eversafe.init(Constants.EVERSAFE.url,Constants.EVERSAFE.appid,userinfo)
         Eversafe.sharedInstance()?.initialize(withBaseUrl: Constants.EVERSAFE.url, appId: Constants.EVERSAFE.appid, userInfo: userinfo)
         
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {

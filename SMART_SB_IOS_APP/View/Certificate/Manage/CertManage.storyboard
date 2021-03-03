@@ -12,7 +12,7 @@
         <!--Cert ManageVC-->
         <scene sceneID="w8W-iF-o6Y">
             <objects>
-                <viewController storyboardIdentifier="CertManageVC" modalPresentationStyle="overCurrentContext" id="jQg-Of-7vW" customClass="CertManageVC" customModule="SMART_SB_APP_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CertManageVC" modalPresentationStyle="overCurrentContext" id="jQg-Of-7vW" customClass="CertManageVC" customModule="SMART_SB_IOS_APP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uI5-fW-rtc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -29,7 +29,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Rf-Av-s0e" customClass="ViewBorder" customModule="SMART_SB_APP_IOS" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Rf-Av-s0e" customClass="ViewBorder" customModule="SMART_SB_IOS_APP" customModuleProvider="target">
                                 <rect key="frame" x="25" y="120" width="270" height="122"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UIS-bQ-hFe">
@@ -156,7 +156,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQ3-xS-ttU" customClass="ViewBorder" customModule="SMART_SB_APP_IOS" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQ3-xS-ttU" customClass="ViewBorder" customModule="SMART_SB_IOS_APP" customModuleProvider="target">
                                 <rect key="frame" x="25" y="252" width="270" height="79"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJF-4h-vdX">
@@ -244,17 +244,16 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDd-ib-9C3">
-                                <rect key="frame" x="0.0" y="522" width="320" height="46"/>
+                                <rect key="frame" x="0.0" y="518" width="320" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nst-tv-lD0">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                         <color key="backgroundColor" red="0.027450980392156862" green="0.1803921568627451" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="46" id="GjC-J3-3nc"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="OJR-fe-iZ4"/>
+                                            <constraint firstAttribute="height" constant="50" id="BX1-Mc-szN"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15.5"/>
-                                        <state key="normal" title="닫기">
+                                        <state key="normal" title="이 전">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>

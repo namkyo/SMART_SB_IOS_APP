@@ -11,7 +11,7 @@
         <!--ResultVC-->
         <scene sceneID="188-5B-5e4">
             <objects>
-                <viewController storyboardIdentifier="ResultVC" modalPresentationStyle="overCurrentContext" id="oTC-Hk-ea5" customClass="ResultVC" customModule="SMART_SB_APP_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResultVC" modalPresentationStyle="overCurrentContext" id="oTC-Hk-ea5" customClass="ResultVC" customModule="SMART_SB_IOS_APP" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iWW-gV-WSJ"/>
                         <viewControllerLayoutGuide type="bottom" id="u1p-qo-IQN"/>
@@ -21,24 +21,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MYy-Vb-KM2">
-                                <rect key="frame" x="0.0" y="627" width="187.5" height="40"/>
+                                <rect key="frame" x="0.0" y="617" width="187.5" height="50"/>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Vjh-gD-k82"/>
+                                    <constraint firstAttribute="height" constant="50" id="AyW-6o-k8b"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18.5"/>
                                 <state key="normal" title="재 촬 영">
-                                    <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="pressRetake:" destination="oTC-Hk-ea5" eventType="touchUpInside" id="AyC-XR-BrS"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vqW-rv-4dt">
-                                <rect key="frame" x="187.5" y="627" width="187.5" height="40"/>
+                                <rect key="frame" x="187.5" y="617" width="187.5" height="50"/>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.18039215689999999" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Y6L-mi-bQV"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18.5"/>
-                                <state key="normal" title="다  음">
+                                <state key="normal" title="다 음">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -46,7 +49,7 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7P-M5-Dgc">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="627"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="617"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sQy-05-SxL">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="358"/>
@@ -158,7 +161,7 @@
         <!--OcrVC-->
         <scene sceneID="8Ld-h6-XYu">
             <objects>
-                <viewController storyboardIdentifier="OcrVC" modalPresentationStyle="overCurrentContext" id="krD-H6-7QI" customClass="OcrVC" customModule="SMART_SB_APP_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OcrVC" modalPresentationStyle="overCurrentContext" id="krD-H6-7QI" customClass="OcrVC" customModule="SMART_SB_IOS_APP" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rHV-3g-RvF"/>
                         <viewControllerLayoutGuide type="bottom" id="XVc-de-mLB"/>
@@ -197,11 +200,11 @@
                                 <rect key="frame" x="26" y="405.5" width="323" height="125"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fcU-KB-8U6">
-                                <rect key="frame" x="187.5" y="627" width="187.5" height="40"/>
-                                <color key="backgroundColor" red="0.098039215686274508" green="0.25490196078431371" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="187.5" y="617" width="187.5" height="50"/>
+                                <color key="backgroundColor" red="0.027450980392156862" green="0.1803921568627451" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="187.5" id="9TC-wd-dvp"/>
-                                    <constraint firstAttribute="height" constant="40" id="nLy-6f-k82"/>
+                                    <constraint firstAttribute="height" constant="50" id="Ahy-gE-Tnz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18.5"/>
                                 <state key="normal" title="다 음">
@@ -212,14 +215,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T08-Hc-tzK">
-                                <rect key="frame" x="0.0" y="627" width="187.5" height="40"/>
+                                <rect key="frame" x="0.0" y="617" width="187.5" height="50"/>
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="bNK-Qx-ymB"/>
+                                    <constraint firstAttribute="height" constant="50" id="xct-Dl-1Ks"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18.5"/>
                                 <state key="normal" title="닫 기">
-                                    <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="0.84705882352941175" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="cancel:" destination="krD-H6-7QI" eventType="touchUpInside" id="7zY-Jj-1ha"/>
