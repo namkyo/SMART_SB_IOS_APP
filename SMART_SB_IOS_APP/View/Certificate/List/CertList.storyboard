@@ -17,9 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_image" translatesAutoresizingMaskIntoConstraints="NO" id="2bK-lQ-ofh">
-                                <rect key="frame" x="72" y="0.0" width="248" height="220.5"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="공동인증서 관리" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3FM-hh-3ux">
                                 <rect key="frame" x="25" y="30" width="138" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
@@ -54,6 +51,10 @@
                                     <action selector="닫기Button:" destination="zeU-yk-KKt" eventType="touchUpInside" id="rJ6-zG-fQs"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="back_image" translatesAutoresizingMaskIntoConstraints="NO" id="2bK-lQ-ofh">
+                                <rect key="frame" x="70" y="-30" width="250" height="220"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wUh-yb-GnL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -64,12 +65,10 @@
                             <constraint firstItem="wUh-yb-GnL" firstAttribute="trailing" secondItem="pC1-Rn-hSH" secondAttribute="trailing" constant="20" id="O7Q-J2-Ryh"/>
                             <constraint firstItem="pC1-Rn-hSH" firstAttribute="leading" secondItem="wUh-yb-GnL" secondAttribute="leading" constant="20" id="TQX-1p-wEi"/>
                             <constraint firstItem="Fyd-6z-TAf" firstAttribute="leading" secondItem="gCd-ZW-EpJ" secondAttribute="leading" id="U7u-rW-g3d"/>
-                            <constraint firstItem="2bK-lQ-ofh" firstAttribute="top" secondItem="gCd-ZW-EpJ" secondAttribute="top" id="VQf-qC-FYz"/>
                             <constraint firstItem="pC1-Rn-hSH" firstAttribute="top" secondItem="D77-3V-csd" secondAttribute="bottom" constant="30" id="bQ0-nH-7eF"/>
                             <constraint firstItem="Fyd-6z-TAf" firstAttribute="top" secondItem="pC1-Rn-hSH" secondAttribute="bottom" id="hGv-JU-6Ek"/>
                             <constraint firstItem="wUh-yb-GnL" firstAttribute="trailing" secondItem="Fyd-6z-TAf" secondAttribute="trailing" id="jwn-TU-7At"/>
                             <constraint firstItem="wUh-yb-GnL" firstAttribute="bottom" secondItem="Fyd-6z-TAf" secondAttribute="bottom" id="m3i-FA-TUF"/>
-                            <constraint firstAttribute="trailing" secondItem="2bK-lQ-ofh" secondAttribute="trailing" id="nhc-Pm-vQD"/>
                             <constraint firstItem="3FM-hh-3ux" firstAttribute="top" secondItem="wUh-yb-GnL" secondAttribute="top" constant="30" id="qwS-3v-yBL"/>
                             <constraint firstItem="3FM-hh-3ux" firstAttribute="leading" secondItem="wUh-yb-GnL" secondAttribute="leading" constant="25" id="vc5-cM-2c0"/>
                         </constraints>

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 enum CertSignType {
     case 서명
     case 스크래핑
@@ -85,14 +86,29 @@ class CertSignVC: UIViewController {
             .QwertyView(title: "공동인증서 비밀번호",
                      data: parameters,
                      isShowDots : false,
-                     completeHandler: {
+                     completeHandler: { [self]
                         pinStr, text in
                         Log.print("공동인증서 입력후...")
                         Log.print("공동인증서 비밀번호 enc Data: \(text)")
-                        Log.print("공동인증서 비밀번호 dec Data: \(Function.AES256Decrypt(val: text))")
+                        //Log.print("공동인증서 비밀번호 dec Data: \(Function.AES256Decrypt(val: text))")
                         
                         //전자서명
                         if self.mode == 2 {
+                            // 비밀번호 체크
+                            if !self.checkPassword(index: self.index, text: text) {
+                                self.dismiss(animated: true, completion: {
+                                    self.failed?("9999,","비밀번호가 일치하지 않습니다.")
+                                })
+                                return
+                            }
+                            //주민번호 검증
+                            if !checkRrn(index: self.index, text: text,rrn: self.parameters["rbrNo"] as! String) {
+                                self.dismiss(animated: true, completion: {
+                                    self.failed?("9999,","이용자랑 인증서 실명번호가 일치하지 않습니다.")
+                                })
+                                return
+                            }
+                            
                             resultData=self.signCert(password: text)
                             Log.print("공동인증서 서명결과 Data: \(resultData)")
                         }
@@ -102,7 +118,18 @@ class CertSignVC: UIViewController {
                             
                             // 비밀번호 체크
                             if !self.checkPassword(index: self.index, text: text) {
-                                UIApplication.shared.showAlert(message: "비밀번호가 일치하지 않습니다.\n 확인 후 다시 시도해주세요.")
+                                self.dismiss(animated: true, completion: {
+                                    self.failed?("9999,","비밀번호가 일치하지 않습니다.")
+                                })
+                                return
+                            }
+                            
+                            var minwon: JSON = JSON(self.parameters["MinWon_1"] as Any)
+                            //주민번호 검증
+                            if !checkRrn(index: self.index, text: text,rrn: minwon["Input"]["주민등록번호"].string!) {
+                                self.dismiss(animated: true, completion: {
+                                    self.failed?("9999,","이용자랑 인증서 실명번호가 일치하지 않습니다.")
+                                })
                                 return
                             }
                             
@@ -110,15 +137,13 @@ class CertSignVC: UIViewController {
                             resultData["name"]=self.certContent?.getSubject()
                             resultData["validTo"]=self.certContent?.getValidTo2().replacingOccurrences(of: "-", with: "").replacingOccurrences(of: ".", with: "")
                         }
-                        //비밀번호 체크후 비밀번호 검증
                         self.dismiss(animated: true, completion: {
                             self.complete?(resultData)
                         })
+                            
                      }, cancelHandler: {
                         Log.print("cancel")
-                        self.dismiss(animated: true, completion: {
-                            self.failed?("9990","비밀번호 입력취소")
-                        })
+                        self.failed?("9999","인증서 비밀번호 입력을 취소했습니다.")
                      })
         
     }
@@ -129,20 +154,6 @@ class CertSignVC: UIViewController {
             resultData["msg"]="전자서명누락"
             return resultData}
         Log.print("전자서명")
-        // 비밀번호 체크
-        if !checkPassword(index: index, text: password) {
-            self.dismiss(animated: true, completion: {
-                UIApplication.shared.showAlert(message: "비밀번호가 일치하지 않습니다.\n 확인 후 다시 시도해주세요.")
-                //self.complete?(resultData)
-            })
-        }
-        
-        //주민번호 검증
-//        if !checkRrn(index: index, text: password,rrn: parameters["rbrNo"]) {
-//            UIApplication.shared.showAlert(message: "비밀번호가 일치하지 않습니다.\n 확인 후 다시 시도해주세요.")
-//            return resultData
-//        }
-        
         
         let signData = sign(index: index,
                             data: sign_data as! String,

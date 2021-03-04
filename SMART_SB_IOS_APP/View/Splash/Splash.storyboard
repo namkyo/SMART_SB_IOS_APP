@@ -11,7 +11,7 @@
         <!--SplashVC-->
         <scene sceneID="QqU-c8-j6n">
             <objects>
-                <viewController storyboardIdentifier="SplashVC" id="SPB-QB-GQw" customClass="SplashVC" customModule="SMART_SB_APP_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SplashVC" id="SPB-QB-GQw" customClass="SplashVC" customModule="SMART_SB_IOS_APP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RnE-rs-oDo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,23 +24,27 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_image" translatesAutoresizingMaskIntoConstraints="NO" id="6fV-4W-ETv">
-                                <rect key="frame" x="166" y="0.0" width="248" height="220.5"/>
+                                <rect key="frame" x="214" y="-30" width="250" height="220"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="CxD-mU-7ku"/>
+                                    <constraint firstAttribute="width" constant="250" id="yKm-l6-FuU"/>
+                                </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dOA-9r-zFf">
-                                <rect key="frame" x="147" y="503" width="120" height="60"/>
+                                <rect key="frame" x="157" y="503" width="100" height="60"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="DxF-hV-cgE"/>
                                     <constraint firstAttribute="height" constant="60" id="Vs1-3s-UhZ"/>
-                                    <constraint firstAttribute="width" constant="120" id="pGq-HT-mON"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KZy-yq-GHN"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6fV-4W-ETv" firstAttribute="top" secondItem="RnE-rs-oDo" secondAttribute="top" id="AFT-QN-4Hz"/>
-                            <constraint firstAttribute="trailing" secondItem="6fV-4W-ETv" secondAttribute="trailing" id="C0L-d6-4vj"/>
                             <constraint firstItem="dOA-9r-zFf" firstAttribute="centerX" secondItem="wlU-35-rJu" secondAttribute="centerX" id="EqX-Ey-DqL"/>
+                            <constraint firstItem="6fV-4W-ETv" firstAttribute="top" secondItem="RnE-rs-oDo" secondAttribute="top" constant="-30" id="Oar-1E-jov"/>
                             <constraint firstItem="dOA-9r-zFf" firstAttribute="top" secondItem="wlU-35-rJu" secondAttribute="bottom" constant="10" id="p8F-JP-6Rz"/>
+                            <constraint firstItem="KZy-yq-GHN" firstAttribute="trailing" secondItem="6fV-4W-ETv" secondAttribute="trailing" constant="-50" id="rsP-C5-9fS"/>
                             <constraint firstItem="wlU-35-rJu" firstAttribute="centerY" secondItem="RnE-rs-oDo" secondAttribute="centerY" id="un0-5W-cKG"/>
                             <constraint firstItem="wlU-35-rJu" firstAttribute="centerX" secondItem="RnE-rs-oDo" secondAttribute="centerX" id="vWB-ku-CbL"/>
                         </constraints>

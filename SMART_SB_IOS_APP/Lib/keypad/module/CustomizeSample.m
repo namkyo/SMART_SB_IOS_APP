@@ -112,33 +112,27 @@
 
 - (NSDictionary *)customImagesInfoForSpecialKey:(ESSpecialKey)specialKey
 {
-    NSMutableDictionary *info = [NSMutableDictionary new] ;
+    NSMutableDictionary *info = [[super customImagesInfoForSpecialKey:specialKey] mutableCopy];
+        UIImage *backgroundImage = (UIImage *)[info valueForKey:ESKeyNormalBackgroundImage];
+        if (backgroundImage) {
+            CGRect rect = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height);
+            UIGraphicsBeginImageContext(rect.size);
+            CGContextRef context = UIGraphicsGetCurrentContext();
+            CGContextClipToMask(context, rect, backgroundImage.CGImage);
+           
+            // 스마트저축은행 이슈: 특수키의 경우, customImagesInfoForCharacter 가 아닌 customImagesInfoForSpecialKey 메서드 구현에서 동일한 로직을 추가하시면 됩니다~ r( ^_^);;
+            CGContextSetFillColorWithColor(context, [[UIColor colorWithRed:7.0f/255.0f green:46.0f/255.0f blue:94.0f/255.0f alpha:1] CGColor]);
+           // CGContextSetFillColorWithColor(context, [[UIColor greenColor] CGColor]);
+           
+            CGContextFillRect(context, rect);
+            UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            UIImage *flippedImage = [UIImage imageWithCGImage:img.CGImage scale:1.0 orientation: UIImageOrientationUp];
+            [info setObject:flippedImage forKey:ESKeyNormalBackgroundImage];
+        }
+        return info;
     
-    // 특수문자 전환키를 없애는 예제
-    //if (specialKey == ESSpecialKeyToggle)  return  nil;
-//    if (specialKey == ESSpecialKeyToggle) {
-//        UIImage *backgroundImage = (UIImage *)[info valueForKey:ESKeyNormalSymbolImage];
-//        
-//        if (backgroundImage){
-//            // 키 배경색을 바꾸는 예제
-//            CGRect rect = CGRectMake(0, 0, backgroundImage.size.width, backgroundImage.size.height);
-//            UIGraphicsBeginImageContext(rect.size);
-//            CGContextRef context = UIGraphicsGetCurrentContext();
-//            CGContextClipToMask(context, rect, backgroundImage.CGImage);
-//            CGContextSetFillColorWithColor(context, [[UIColor colorWithRed:7.0f/255.0f green:46.0f/255.0f blue:94.0f/255.0f alpha:1] CGColor]);
-//            CGContextFillRect(context, rect);
-//            UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-//            UIGraphicsEndImageContext();
-//            
-//            UIImage *flippedImage = [UIImage imageWithCGImage:img.CGImage
-//                                                        scale:1.0 orientation: UIImageOrientationUp];
-//            [info setObject:flippedImage forKey:ESSpecialKeyToggle];
-//        }
-//    }
-    
-    
-    
-    return [super customImagesInfoForSpecialKey:specialKey];
+   // return [super customImagesInfoForSpecialKey:specialKey];
 }
 
 @end

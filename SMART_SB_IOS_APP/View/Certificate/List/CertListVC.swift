@@ -135,7 +135,7 @@ extension CertListVC: UITableViewDelegate, UITableViewDataSource {
                     errcd,errMsg in
                     Log.print("errcd : " + errcd)
                     Log.print("errMsg : " + errMsg)
-                    UIApplication.shared.showAlert(message: "인증서 비밀번호 입력을 취소했습니다.")
+                    UIApplication.shared.showAlert(message: errMsg)
                     //self.dismiss(animated: true, completion: {
                     //    self.failed?(errcd,errMsg)
                     //})

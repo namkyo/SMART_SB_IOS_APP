@@ -263,25 +263,25 @@
                                 </subviews>
                             </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back_image" translatesAutoresizingMaskIntoConstraints="NO" id="UZv-r4-Fe6">
-                                <rect key="frame" x="145" y="-30" width="215" height="177"/>
+                                <rect key="frame" x="120" y="-30" width="250" height="220"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="177" id="IWj-0b-nvu"/>
-                                    <constraint firstAttribute="width" constant="215" id="wCc-TD-nuk"/>
+                                    <constraint firstAttribute="height" constant="220" id="GfG-ld-iUd"/>
+                                    <constraint firstAttribute="width" constant="250" id="vZo-Lb-jfX"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xx2-Tu-bnw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="UZv-r4-Fe6" secondAttribute="trailing" constant="-40" id="9Zy-hq-Ckc"/>
                             <constraint firstItem="xx2-Tu-bnw" firstAttribute="trailing" secondItem="9Rf-Av-s0e" secondAttribute="trailing" constant="25" id="HVh-rp-68t"/>
                             <constraint firstItem="xx2-Tu-bnw" firstAttribute="trailing" secondItem="pDd-ib-9C3" secondAttribute="trailing" id="J5i-Ky-o6z"/>
                             <constraint firstItem="pDd-ib-9C3" firstAttribute="leading" secondItem="xx2-Tu-bnw" secondAttribute="leading" id="M4v-Sc-t2v"/>
                             <constraint firstItem="pDd-ib-9C3" firstAttribute="bottom" secondItem="xx2-Tu-bnw" secondAttribute="bottom" id="Wjk-nP-yjC"/>
                             <constraint firstItem="9Rf-Av-s0e" firstAttribute="top" secondItem="eBm-jE-8Cj" secondAttribute="bottom" constant="11" id="XV8-MO-v25"/>
-                            <constraint firstItem="UZv-r4-Fe6" firstAttribute="top" secondItem="uI5-fW-rtc" secondAttribute="top" constant="-30" id="XsX-DX-8b0"/>
                             <constraint firstItem="gec-pe-KbS" firstAttribute="top" secondItem="xx2-Tu-bnw" secondAttribute="top" constant="38" id="eEd-qG-Ce3"/>
                             <constraint firstItem="bQ3-xS-ttU" firstAttribute="leading" secondItem="9Rf-Av-s0e" secondAttribute="leading" id="jTu-4R-wdL"/>
+                            <constraint firstAttribute="trailing" secondItem="UZv-r4-Fe6" secondAttribute="trailing" constant="-50" id="oHB-Nc-xkq"/>
+                            <constraint firstItem="UZv-r4-Fe6" firstAttribute="top" secondItem="uI5-fW-rtc" secondAttribute="top" constant="-30" id="s0T-lc-8mS"/>
                             <constraint firstItem="gec-pe-KbS" firstAttribute="leading" secondItem="xx2-Tu-bnw" secondAttribute="leading" constant="25" id="s6x-ki-fx3"/>
                             <constraint firstItem="eBm-jE-8Cj" firstAttribute="top" secondItem="gec-pe-KbS" secondAttribute="bottom" constant="30" id="vH4-R8-mru"/>
                             <constraint firstItem="eBm-jE-8Cj" firstAttribute="leading" secondItem="gec-pe-KbS" secondAttribute="leading" id="xgM-5F-imI"/>

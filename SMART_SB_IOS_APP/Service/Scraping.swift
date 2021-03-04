@@ -253,19 +253,17 @@ class Scraping : NSObject , SASManagerDelegate {
             Log.print("6.자격득실")
             self.resultData["NHIS_3"]=output
             
-            if "8000F102" != errorCode {
+            if "00000000" == errorCode {
                 if let temp = JSON(output)["Result"]["사업장관리번호"].string {
                     let endIdx: String.Index = temp.index(temp.startIndex, offsetBy: 9)
                     let result = String(temp[...endIdx])
                     Log.print("사업자등록번호 : \(result)")
                     self.homeScraping(params: self.parameters,cert: self.parameters_cert,rbrNo: result)
                 }else{
-                    IndicatorView().hideProgress2()
-                    //if errorCode == "80004128" {
-                    self.scrapingcompleteHandler!( "0000",self.resultData)
+                    self.homeScraping(params: self.parameters,cert: self.parameters_cert,rbrNo: "")
                 }
             }else{
-                IndicatorView().hideProgress()
+                self.homeScraping(params: self.parameters,cert: self.parameters_cert,rbrNo: "")
             }
             
             break;
@@ -280,20 +278,17 @@ class Scraping : NSObject , SASManagerDelegate {
             self.resultData["HOME_2"]=output
             break;
         case 9:
-            IndicatorView().textChange(msg: "9..10 [홈택스] : 작업1")
+            IndicatorView().textChange(msg: "9..10 [홈택스] : 부가가치세증명원")
             Log.print("9.홈택스 1")
             self.resultData["HOME_3"]=output
             break;
         case 10:
-            IndicatorView().textChange(msg: "10..10 [홈택스] : 작업2")
+            IndicatorView().textChange(msg: "10..10 [홈택스] : 소득금액증명원")
             Log.print("10. 홈택스 2")
             self.resultData["HOME_4"]=output
             IndicatorView().hideProgress2()
             
-            
-            if "8000F102" != errorCode {
-                self.scrapingcompleteHandler!( "0000",self.resultData)
-            }
+            self.scrapingcompleteHandler!( "0000",self.resultData)
             
             break;
         default:

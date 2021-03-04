@@ -93,7 +93,7 @@ extension UIViewController {
             $0.text=msg
             $0.textColor = #colorLiteral(red: 0.02745098039, green: 0.1803921569, blue: 0.368627451, alpha: 1)
             $0.textAlignment = .center
-            $0.font=UIFont.systemFont(ofSize: 25)
+            $0.font=UIFont.systemFont(ofSize: 18)
         }
         backView!.addSubview(runName!)
         runName!.snp.makeConstraints{
