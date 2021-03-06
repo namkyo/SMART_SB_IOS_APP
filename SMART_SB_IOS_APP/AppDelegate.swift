@@ -12,7 +12,30 @@ import Firebase
 import FirebaseMessaging
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, EversafeDelegate {
+    func eversafeDidFailWithErrorCode(_ errorCode: String!, errorMessage: String!) {
+        Log.print("errorCode : \(errorCode) , errorMessage : \(errorMessage)")
+//        yn = false
+//        DispatchQueue.main.async {
+//        UIApplication.shared.showAlert(message:errorMessage, confirmHandler: {
+//                exit(0)
+//        })
+//        }
+    }
+    
+    func eversafeDidFindThreats(_ threats: [Any]!) {
+        
+        for tt in threats {
+            yn = false
+            DispatchQueue.main.async {
+                UIApplication.shared.showAlert(message: (tt as AnyObject).localizedDescription, confirmHandler: {
+                    exit(0)
+            })
+            return
+        }
+        }
+    }
+    var yn:Bool = true
     var window: UIWindow?
     //공동인증서 모듈
     var certManager = CertManager()
@@ -43,6 +66,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /**************************** FDS service start *****************************/
         ixcSecureManager.initLicense(Configuration.IXC_LICENSE, andCustomID: Configuration.IXC_CUSTOMER_ID)
         /**************************** FDS service end *****************************/
+        //위변조 탐지
+        var userinfo : Dictionary<AnyHashable,Any> = [AnyHashable:Any]()
+        userinfo["phoneNum"]=true
+        userinfo["blkdg"]=true
+        userinfo["adb"]=true
+        Eversafe.sharedInstance()?.initialize(withBaseUrl: Constants.EVERSAFE.url, appId: Constants.EVERSAFE.appid, userInfo: userinfo)
+        Eversafe.sharedInstance()?.delegate=self
         return true
     }
     
@@ -134,27 +164,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     let bgTaskView = UIView()
-    
     // 실행 - (홈버튼 두번) -> 일시중지
     func applicationWillResignActive(_ application: UIApplication) {
+        //스샷방지
         bgTaskView.backgroundColor = .white
         bgTaskView.frame = UIScreen.main.bounds
         window?.addSubview(bgTaskView)
     }
     
-    // 중지 - (백그라운드 재실행) -> 실행
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        bgTaskView.removeFromSuperview()
+    // 실행 - (홈버튼) -> 백그라운드
+    func applicationDidEnterBackground(_ application: UIApplication) {
     }
     
     // 중지 - (앱 재실행) -> 실행
     func applicationWillEnterForeground(_ application: UIApplication) {
+        //스샷방지
+        bgTaskView.removeFromSuperview()
+        
+    }
+    // 중지 - (백그라운드 재실행) -> 실행
+    func applicationDidBecomeActive(_ application: UIApplication){
+        //스샷방지
         bgTaskView.removeFromSuperview()
     }
     
-    // 실행 - (홈버튼) -> 백그라운드
-    func applicationDidEnterBackground(_ application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
 }
 extension AppDelegate : UNUserNotificationCenterDelegate {
     // Receive displayed notifications for iOS 10 devices.

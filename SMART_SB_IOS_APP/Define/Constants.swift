@@ -14,7 +14,9 @@ enum Constants {
     enum PageUrl{
         static let  WEB_MAIN_H: String = "http://210.221.92.125:8082/"
 //        ?static let  WEB_MAIN_D: String = "http://172.17.171.1:8010/"
-        static let  WEB_MAIN_D: String = "http://112.216.114.150:8010/"
+        //static let  WEB_MAIN_D: String = "http://112.216.114.150:8010/"
+        static let  WEB_MAIN_D: String = "https://smart-i.smartbank.co.kr:8010/"
+        
         static let  WEB_MAIN_R: String = "http://172.17.171.1:8010/"
 
         static let  WEB_MAIN_VIEW: String = "main.view"

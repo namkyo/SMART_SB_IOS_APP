@@ -62,6 +62,8 @@ class CertPwChangeVC: UIViewController {
                             새_비밀번호_확인TextField: ESSecureTextFieldModel(hint: "새 비밀번호 입력 확인",
                                                                                      superView: 새_비밀번호_확인BaseView)]
         
+        현재_비밀번호TextField.addTarget(self, action: #selector(onTapButton05), for: .touchUpInside)
+        
         secureTextFields.forEach { textField, model in
             textField.placeholder = model.hint
             textField.borderStyle = .roundedRect
@@ -79,6 +81,10 @@ class CertPwChangeVC: UIViewController {
         현재_비밀번호TextField.becomeFirstResponder()
     }
     
+    @objc func onTapButton05() {
+        Log.print("으으으")
+    }
+    
     // ESKeypadSpec 생성
     private func setESKeypadSpec() -> ESKeypadSpec {
         let spec = ESKeypadSpec()
@@ -90,7 +96,7 @@ class CertPwChangeVC: UIViewController {
     
     // validation
     private func passCheck() -> Bool {
-        let t = String(cString: 현재_비밀번호TextField.getPlainText())
+        let t = Function.AES256Encrypt(val: String(utf8String: 현재_비밀번호TextField.getPlainText())!)
         guard !(checkPassword(index: Int32(indexPath.row), text: t) < 0) else {
             showAlert("비밀번호를 확인해 주세요.")
             return false
@@ -100,9 +106,9 @@ class CertPwChangeVC: UIViewController {
 //
 //            return false
 //        }
-        
+        Function.AES256Encrypt(val: String(utf8String: 새_비밀번호_확인TextField.getPlainText())!)
 //        guard 새_비밀번호_확인TextField.enteredCharacters() > minInputLength else { return false }
-        guard String(cString: 새_비밀번호TextField.getPlainText()) == String(cString: 새_비밀번호_확인TextField.getPlainText()) else {
+        guard Function.AES256Encrypt(val: String(utf8String: 새_비밀번호TextField.getPlainText())!) == Function.AES256Encrypt(val: String(utf8String: 새_비밀번호_확인TextField.getPlainText())!) else {
             UIApplication.shared.showAlert(message: "새 비밀번호가 서로 일치하지 않습니다.")
             return false
         }
@@ -117,8 +123,8 @@ class CertPwChangeVC: UIViewController {
     private func changePassword() {
 //        guard let certItem = cert else { return }
         
-        let oldPw = String(cString: 현재_비밀번호TextField.getPlainText())
-        let newPw = String(cString: 새_비밀번호TextField.getPlainText())
+        let oldPw = Function.AES256Encrypt(val: String(utf8String: 현재_비밀번호TextField.getPlainText())!)
+        let newPw = Function.AES256Encrypt(val: String(utf8String: 새_비밀번호TextField.getPlainText())!)
         let newRet = checkPassword(index: Int32(indexPath.row), text: oldPw)
         
         var errStr = ""
@@ -165,13 +171,20 @@ class CertPwChangeVC: UIViewController {
         
         
         if certManager.changeCertPassword(Int32(indexPath.row),
-                                       oldPassword: oldPw,
-                                       newPassword: newPw) {
+                                       oldPassword: Function.AES256Decrypt(val: oldPw),
+                                       newPassword: Function.AES256Decrypt(val: newPw)) {
             UIApplication.shared.showAlert(message: "인증서 암호 변경 성공", confirmHandler: {
+                self.현재_비밀번호TextField.text=""
+                self.새_비밀번호TextField.text=""
+                self.새_비밀번호_확인TextField.text=""
                             self.dismiss(animated: true, completion: nil)
                         })
         } else {
-            UIApplication.shared.showAlert(message: "인증서 암호 변경 실패(\(certManager.lastErrCode))")
+            UIApplication.shared.showAlert(message: "인증서 암호 변경 실패(\(certManager.lastErrCode))",confirmHandler:{
+                    self.현재_비밀번호TextField.text=""
+                    self.새_비밀번호TextField.text=""
+                    self.새_비밀번호_확인TextField.text=""
+            })
         }
 //
 //        if certManager.changeCertPassword_S(Int32(indexPath.row), oldPassword: oldPw, newPassword: newPw) {
@@ -185,16 +198,11 @@ class CertPwChangeVC: UIViewController {
     
     // 비밀번호 체크
     func checkPassword(index: Int32, text: String) -> Int32 {
-        let data = makeCString(from: text)
-        let password = SecureData(data: data, length: UInt32(text.count))
-        return checkPassword(index: index, password: password!)
-    }
-    
-    // 비밀번호 체크
-    private func checkPassword(index: Int32, password: ProtectedData) -> Int32 {
-        let result = certManager.checkCertPassword_S(Int32(index), currentPassword: password as! SecureData)
+        let data = makeCString(from: Function.AES256Decrypt(val: text))
+        let result = certManager.checkCertPassword_S(Int32(index), currentPassword: SecureData(data: data, length: UInt32(Function.AES256Decrypt(val: text).count)))
         return result
     }
+    
     
     // Convert UnsafeMutablePointer
     func makeCString(from str: String) -> UnsafeMutablePointer<UInt8> {

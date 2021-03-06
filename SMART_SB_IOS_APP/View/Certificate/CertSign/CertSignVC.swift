@@ -102,7 +102,7 @@ class CertSignVC: UIViewController {
                                 return
                             }
                             //주민번호 검증
-                            if !checkRrn(index: self.index, text: text,rrn: self.parameters["rbrNo"] as! String) {
+                            if !checkRrn(index: self.index, text: text,rrn: (self.parameters["rbrno"] as? String)!) {
                                 self.dismiss(animated: true, completion: {
                                     self.failed?("9999,","이용자랑 인증서 실명번호가 일치하지 않습니다.")
                                 })
@@ -187,6 +187,7 @@ class CertSignVC: UIViewController {
     
     // 주민번호 체크 체크
     private func checkRrn(index: Int32, text: String,rrn : String) -> Bool {
+        Log.print("주민번호 체크 : "+Function.AES256Decrypt(val: rrn))
         let data = makeCString(from: Function.AES256Decrypt(val: text))
         let password = SecureData(data: data, length: UInt32(Function.AES256Decrypt(val: text).count))
         let verify = certManager.selfUserVerify_S(Int32(index), idv: Function.AES256Decrypt(val: rrn), password: password!)

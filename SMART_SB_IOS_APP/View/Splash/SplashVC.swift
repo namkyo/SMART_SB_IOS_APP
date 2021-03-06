@@ -36,7 +36,7 @@ class SplashVC: UIViewController {
         userinfo["blkdg"]=true
         userinfo["adb"]=true
         //Eversafe.init(Constants.EVERSAFE.url,Constants.EVERSAFE.appid,userinfo)
-        Eversafe.sharedInstance()?.initialize(withBaseUrl: Constants.EVERSAFE.url, appId: Constants.EVERSAFE.appid, userInfo: userinfo)
+//        Eversafe.sharedInstance()?.initialize(withBaseUrl: Constants.EVERSAFE.url, appId: Constants.EVERSAFE.appid, userInfo: userinfo)
         
         
     }
@@ -47,11 +47,16 @@ class SplashVC: UIViewController {
         //대기시간
         sleep(3)
         //메인화면 이동
-        if myUserDefaults.string(forKey: Constants.UserDefaultsKey.CUST_NO) == nil {
-            SceneCoordinator().transition(to: "Access", using: .root, animated: true)
-        } else {
-            SceneCoordinator().transition(to: "Main", using: .root, animated: true)
+        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
+        
+        if appDelegate.yn{
+            if myUserDefaults.string(forKey: Constants.UserDefaultsKey.CUST_NO) == nil {
+                SceneCoordinator().transition(to: "Access", using: .root, animated: true)
+            } else {
+                SceneCoordinator().transition(to: "Main", using: .root, animated: true)
+            }
         }
+        
         
     }
     

@@ -238,7 +238,7 @@ Keychain API expects as a validly constructed container class.
 	
 	if (error != nil) 
     { 
-		NSLog(@"dictionaryToSecItemFormat: Error! %@", error);
+		//NSLog(@"dictionaryToSecItemFormat: Error! %@", error);
 	}
 	
     if (xmlData)
@@ -310,7 +310,7 @@ Keychain API expects as a validly constructed container class.
             [returnDict setObject:resultsInfo forKey:(__bridge id)kSecValueData];
 		
 	} else { 
-		NSLog(@"secItemFormatToDictionary: format error.");
+		//NSLog(@"secItemFormatToDictionary: format error.");
 	}
 	
 	return returnDict;

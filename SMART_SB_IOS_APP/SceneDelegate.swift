@@ -9,8 +9,9 @@ import UIKit
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    
+    let bgTaskView = UIView()
     var window: UIWindow?
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // 제공된 UIWindowScene`scene`에 UIWindow`window`를 선택적으로 구성하고 연결하려면이 메서드를 사용합니다.
@@ -37,11 +38,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        
+        bgTaskView.removeFromSuperview()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
+        bgTaskView.backgroundColor = .white
+        bgTaskView.frame = UIScreen.main.bounds
+        window?.addSubview(bgTaskView)
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
@@ -55,7 +61,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
     
-    
-
 }
 
