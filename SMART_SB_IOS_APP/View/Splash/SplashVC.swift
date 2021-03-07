@@ -44,18 +44,32 @@ class SplashVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         Log.print("SplashVC viewDidAppear")
-        //대기시간
-        sleep(3)
-        //메인화면 이동
-        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
         
-        if appDelegate.yn{
+        //인터넷 연결상태 체크
+        if (Function.isInternetAvailable)() {
+            Log.print("인터넷 정상")
+        //internet avilable
+            //대기시간
+            sleep(3)
+            //메인화면 이동
+            //let appDelegate  = UIApplication.shared.delegate as! AppDelegate
+            
             if myUserDefaults.string(forKey: Constants.UserDefaultsKey.CUST_NO) == nil {
                 SceneCoordinator().transition(to: "Access", using: .root, animated: true)
             } else {
                 SceneCoordinator().transition(to: "Main", using: .root, animated: true)
             }
+         
+        } else {
+            Log.print("인터넷 미연결")
+            
+        //internet 'not' avilable
+            UIApplication.shared.showAlert(message: "인터넷 미연결",confirmHandler: {
+                exit(0)
+            })
         }
+        
+        
         
         
     }

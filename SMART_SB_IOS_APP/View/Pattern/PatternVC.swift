@@ -164,19 +164,22 @@ class PatternVC: UIViewController {
             auth_msg = msg
         }
         
-        patternAuth.generateSign(withToken: getToken, tokenClient: tc!, rnd: rnd, msg: auth_msg, pattern: pattern, failCheck: true, onComplete: { tnp in
+        patternAuth.generateSign(withToken: getToken, tokenClient: tc!, rnd: rnd, msg: auth_msg, pattern: pattern, failCheck: false, onComplete: { tnp in
             self.dismiss(animated: true, completion: {
                 self.complete?(tnp.encodedMessage!)
             })
         }, onFail: { code, errMsg, count in
-            if count >= 5 {
-                self.dismiss(animated: true, completion: {
-                    self.failed?("9992")
-                })
-            }
+//            if count >= 5 {
+//                self.dismiss(animated: true, completion: {
+//                    self.failed?("9992")
+//                })
+//            }
 
-            UIApplication.shared.showAlert(message: "패턴을 정확히 입력해 주세요.(\(count)/5)")
-            self.patternView.invalidateCurrentPattern() // 패턴 초기화
+//            UIApplication.shared.showAlert(message: "패턴을 정확히 입력해 주세요.(\(count)/5)")
+//            self.patternView.invalidateCurrentPattern() // 패턴 초기화
+            self.dismiss(animated: true, completion: {
+                self.failed?("0000")
+            })
         })
     }
     

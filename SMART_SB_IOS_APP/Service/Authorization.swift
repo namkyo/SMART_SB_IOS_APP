@@ -27,7 +27,9 @@ class Authorization {
         switch prcsDvcd {
             case "T": // 최초토큰등록
                 Log.print("최초토큰등록")
-                doRegisterPin1(params: params,sf:sf,ff:ff,webView:webView)
+                
+                    self.doRegisterPin1(params: params,sf:sf,ff:ff,webView:webView)
+                
                 break
             case "R": //R:토큰등록
                 Log.print("토큰등록")
@@ -262,9 +264,9 @@ class Authorization {
                         
                         DataWebSend().resultWebSend(resultCd: "0000", dicParmas:resultData, resultFunc : sf ,webView: webView)
                      }, failed: {
-                        SignDataStr in
-                        Log.print("failed Data: \(SignDataStr)")
-                        DataWebSend().resultWebSend(resultCd: "9998", dicParmas:resultData, resultFunc : sf ,webView: webView)
+                        errCd in
+                        resultData["SIGN"]="asdasdasdasdas"
+                        DataWebSend().resultWebSend(resultCd: errCd, dicParmas:resultData, resultFunc : sf ,webView: webView)
                      })
     }
     
@@ -452,7 +454,27 @@ class Authorization {
                         Log.print("completed Data: \(pinStr), \(SignDataStr)")
                         
                         
-                        self.doRegisterPin2(params: params,sf:sf,ff:ff,webView:webView,pin:SignDataStr)
+                        if Constants.CHECK_VALIDATION {
+                            // 유효성 검사 반환값
+                            let cust_no = UserDefaults.standard.string(forKey: Configuration.CUST_NO)
+                            
+                            
+                           Validation().checkPinValidation(encData: SignDataStr, custNo: cust_no!) {
+                            (result, msg) in
+                            Log.print("유효성검사 통과")
+                                if result {
+                                    DispatchQueue.main.async {
+                                        self.doRegisterPin2(params: params,sf:sf,ff:ff,webView:webView,pin:SignDataStr)
+                                    }
+                                }else{
+                                    resultData["msg"]=msg
+                                    DataWebSend().resultWebSend(resultCd: "9998", dicParmas:resultData, resultFunc : sf ,webView: webView)
+                                }
+                            }
+                        }else{
+                            self.doRegisterPin2(params: params,sf:sf,ff:ff,webView:webView,pin:SignDataStr)
+                        }
+                        
                         //DataWebSend().resultWebSend(resultCd: "0000", dicParmas:resultData, resultFunc : sf ,webView: webView)
                         
                      }, cancelHandler: {

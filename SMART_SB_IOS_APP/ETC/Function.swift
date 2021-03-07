@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 import AdSupport
+import SystemConfiguration
+import SwiftyJSON
 
 extension Data {
     var hexString: String {
@@ -202,4 +204,115 @@ class Function:NSObject {
         return encrypted
     }
     
+    class func getDataFromServer(jsonData : JSON,url:String,completeHandler: (([String: Any]) -> Void)?){
+        var requestUrl = ""
+        
+        switch Constants.MODE {
+        case "H":
+            Log.print("H")
+            requestUrl = Constants.PageUrl.WEB_MAIN_H+url
+        case "D":
+            Log.print("D")
+            requestUrl = Constants.PageUrl.WEB_MAIN_D+url
+        case "R":
+            Log.print("R")
+            requestUrl = Constants.PageUrl.WEB_MAIN_R+url
+        default:
+            Log.print("mode error")
+        }
+        
+        //let requestUrl = Configuration.MAIN_HTTP_URL+url
+        Function.DFT_TRACE_PRINT(output: "requestUrl:",requestUrl)
+        
+       
+        // URL 객체 정의
+        let url = URL(string: requestUrl)
+
+        // URL Request 객체 정의
+        var request = URLRequest(url: url!)
+        request.httpMethod = "POST"
+        request.httpBody = "\(jsonData)".data(using:.utf8)
+
+        // HTTP 메시지 헤더
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+        //request.setValue(String(paramData!.count), forHTTPHeaderField: "Content-Length")
+
+        // URLSession 객체를 통해 전송, 응답값 처리
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                   var resultJson = [String: Any]()
+                   // 서버가 응답이 없거나 통신이 실패
+                   if let e = error {
+                    Log.print("An error has occured: \(e.localizedDescription)")
+                     return
+                   }
+                    guard error == nil else {
+                        resultJson["cd"]="9995"
+                        resultJson["msg"]="접속에러"
+                        completeHandler!(resultJson)
+                        return
+                    }
+                    guard let response = response as? HTTPURLResponse,
+                            (200..<300).contains(response.statusCode) else {
+                        resultJson["cd"]="9995"
+                        resultJson["msg"]="응답에러"
+                        completeHandler!(resultJson)
+                        return
+                    }
+            
+                    // Http 통신이 성공했을 경우, php나 서버에서 echo로 찍어줬을 때 받는 방법
+
+                    guard let outputStr = String(data: data!, encoding: .utf8) else {
+                        resultJson["cd"]="9995"
+                        resultJson["msg"]="메세지가 없습니다"
+                        completeHandler!(resultJson)
+                        return
+                    }
+            
+                    guard let output = outputStr.data(using: .utf8),
+                        let jsonRaw = try? JSONSerialization.jsonObject(with: output, options: []) as? [String: Any] else {
+                        
+                            resultJson["cd"]="9995"
+                            resultJson["msg"]="메세지가 없습니다"
+                            completeHandler!(resultJson)
+                            return
+                    }
+            
+                   print("송신결과 = \(String(describing: jsonRaw))")
+                    completeHandler!(jsonRaw)
+                    
+              //}
+        }
+        // POST 전송
+        task.resume()
+        
+       // return dicData
+    
+    }
+    class func isInternetAvailable() -> Bool
+    {
+        var zeroAddress = sockaddr_in()
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
+        zeroAddress.sin_family = sa_family_t(AF_INET)
+        
+        let defaultRouteReachability = withUnsafePointer(to: &zeroAddress) {
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {zeroSockAddress in
+                SCNetworkReachabilityCreateWithAddress(nil, zeroSockAddress)
+            }
+        }
+        
+        var flags = SCNetworkReachabilityFlags()
+
+        if !SCNetworkReachabilityGetFlags(defaultRouteReachability!, &flags) {
+
+            return false
+
+        }
+
+        let isReachable = flags.contains(.reachable)
+        let needsConnection = flags.contains(.connectionRequired)
+
+        return (isReachable && !needsConnection)
+    }
 }
+

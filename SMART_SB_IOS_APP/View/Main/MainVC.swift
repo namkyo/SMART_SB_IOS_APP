@@ -72,10 +72,34 @@ class MainVC: UIViewController,UIImagePickerControllerDelegate, UINavigationCont
         Log.print("MainVC viewDidLoad : ")
         //1. 웹뷰 화면 생성≈
         Log.print("URL 셋팅")
-        var urlString = Constants.PageUrl.WEB_MAIN_D+Constants.PageUrl.WEB_MAIN_VIEW
+        var urlString = ""
+        
+        switch Constants.MODE {
+        case "H":
+            Log.print("H")
+            urlString = Constants.PageUrl.WEB_MAIN_H+Constants.PageUrl.WEB_MAIN_VIEW
+        case "D":
+            Log.print("D")
+            urlString = Constants.PageUrl.WEB_MAIN_D+Constants.PageUrl.WEB_MAIN_VIEW
+        case "R":
+            Log.print("R")
+            urlString = Constants.PageUrl.WEB_MAIN_R+Constants.PageUrl.WEB_MAIN_VIEW
+        default:
+            Log.print("mode error")
+        }
+        
+        //고객번호 없을시 약관동의 페이지
         if myUserDefaults.string(forKey: Constants.UserDefaultsKey.CUST_NO) == nil {
             urlString = Constants.PageUrl.WEB_MAIN_D+Constants.PageUrl.WEB_SIGN_UP
         }
+        
+        if urlString == ""{
+            UIApplication.shared.showAlert(message: "접속 정보 에러",confirmHandler: {
+                exit(0)
+            })
+            return
+        }
+        
         Log.print("접속URL : "+urlString)
         let request = URLRequest(url: URL(string: urlString)!)
         //웹뷰 url셋팅
