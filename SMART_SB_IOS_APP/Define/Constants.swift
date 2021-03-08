@@ -9,7 +9,7 @@ import Foundation
 
 enum Constants {
     
-    static let  MODE: String = "D"
+    static var MODE: String = "D"
     
     /*
      *  검증설정 checkPinValidation

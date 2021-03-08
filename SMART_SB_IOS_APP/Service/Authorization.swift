@@ -289,7 +289,21 @@ class Authorization {
                      completeHandler: {
                         pinStr, SignDataStr in
                         Log.print("completed Data: \(pinStr), \(SignDataStr)")
-                        self.doRegisterMotp2(params: params,sf:sf,ff:ff,webView:webView,pin:SignDataStr)
+                        
+                        
+                        let cust_no = UserDefaults.standard.string(forKey: Configuration.CUST_NO)
+                        Validation().checkPinValidation(encData: SignDataStr, custNo: cust_no!) {
+                         (result, msg) in
+                         Log.print("유효성검사 통과")
+                             if result {
+                                 DispatchQueue.main.async {
+                                    self.doRegisterMotp2(params: params,sf:sf,ff:ff,webView:webView,pin:SignDataStr)
+                                 }
+                             }else{
+                                 resultData["msg"]=msg
+                                 DataWebSend().resultWebSend(resultCd: "9998", dicParmas:resultData, resultFunc : sf ,webView: webView)
+                             }
+                         }
                         
                      }, cancelHandler: {
                         Log.print("cancel")
@@ -353,7 +367,21 @@ class Authorization {
                      completeHandler: {
                         pinStr, SignDataStr in
                         Log.print("completed Data: \(pinStr), \(SignDataStr)")
-                        self.doRegisterSmartApp2(params: params,sf:sf,ff:ff,webView:webView,pin:SignDataStr)
+                        
+                        let cust_no = UserDefaults.standard.string(forKey: Configuration.CUST_NO)
+                        Validation().checkPinValidation(encData: SignDataStr, custNo: cust_no!) {
+                         (result, msg) in
+                         Log.print("유효성검사 통과")
+                             if result {
+                                 DispatchQueue.main.async {
+                                    self.doRegisterSmartApp2(params: params,sf:sf,ff:ff,webView:webView,pin:SignDataStr)
+                                 }
+                             }else{
+                                 resultData["msg"]=msg
+                                 DataWebSend().resultWebSend(resultCd: "9998", dicParmas:resultData, resultFunc : sf ,webView: webView)
+                             }
+                         }
+                        
                         return
                      }, cancelHandler: {
                         Log.print("cancel")

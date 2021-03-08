@@ -346,6 +346,14 @@
 		E67C529C25EE911E00CD56B1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E67C527A25EE911E00CD56B1 /* Main.storyboard */; };
 		E67C529D25EE911E00CD56B1 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67C527C25EE911E00CD56B1 /* MainVC.swift */; };
 		E67C52B125EE91FA00CD56B1 /* Appdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67C52B025EE91FA00CD56B1 /* Appdata.swift */; };
+		E6A5427725F5DAF500154C86 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A5427625F5DAF500154C86 /* Validation.swift */; };
+		E6A5427F25F5EF2000154C86 /* eversafe_basic_a6e60bbb-c9c1-4f68-9681-f8358a8df365.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6A5427D25F5ECA100154C86 /* eversafe_basic_a6e60bbb-c9c1-4f68-9681-f8358a8df365.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E6A5428E25F5EFE700154C86 /* eversafe_4f4188cf-59b7-41e8-b217-d0c6b1ea2adf.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6A5428525F5EFB200154C86 /* eversafe_4f4188cf-59b7-41e8-b217-d0c6b1ea2adf.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E6A5428F25F5EFE700154C86 /* eversafe_9f9ca560-fcbd-4dca-9b93-29ccf3c3dc6f.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6A5428325F5EFB100154C86 /* eversafe_9f9ca560-fcbd-4dca-9b93-29ccf3c3dc6f.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E6A5429025F5EFE700154C86 /* eversafe_951d1d38-ed86-41c1-8edf-a1bd3a21dc45.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6A5428425F5EFB200154C86 /* eversafe_951d1d38-ed86-41c1-8edf-a1bd3a21dc45.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E6A5429125F5EFE700154C86 /* eversafe_b28f383e-738e-418b-96d4-c336bc76dff9.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6A5428625F5EFB300154C86 /* eversafe_b28f383e-738e-418b-96d4-c336bc76dff9.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E6A5429225F5EFE700154C86 /* eversafe_b5507150-6eb4-4f15-a52c-2458d4488e63.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6A5428225F5EFB000154C86 /* eversafe_b5507150-6eb4-4f15-a52c-2458d4488e63.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E6A5429325F5EFE700154C86 /* eversafe_ee3dc657-3257-43e5-a6fa-d96fdc9dc06c.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6A5428725F5EFB400154C86 /* eversafe_ee3dc657-3257-43e5-a6fa-d96fdc9dc06c.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -359,6 +367,13 @@
 				E67C4F7525EE7CD400CD56B1 /* SafetokenBiometric.framework in Embed Frameworks */,
 				E67C4F7325EE7CD300CD56B1 /* Safetoken.framework in Embed Frameworks */,
 				E67C4F7725EE7CD600CD56B1 /* SafetokenPattern.framework in Embed Frameworks */,
+				E6A5427F25F5EF2000154C86 /* eversafe_basic_a6e60bbb-c9c1-4f68-9681-f8358a8df365.framework in Embed Frameworks */,
+				E6A5428E25F5EFE700154C86 /* eversafe_4f4188cf-59b7-41e8-b217-d0c6b1ea2adf.framework in Embed Frameworks */,
+				E6A5428F25F5EFE700154C86 /* eversafe_9f9ca560-fcbd-4dca-9b93-29ccf3c3dc6f.framework in Embed Frameworks */,
+				E6A5429025F5EFE700154C86 /* eversafe_951d1d38-ed86-41c1-8edf-a1bd3a21dc45.framework in Embed Frameworks */,
+				E6A5429125F5EFE700154C86 /* eversafe_b28f383e-738e-418b-96d4-c336bc76dff9.framework in Embed Frameworks */,
+				E6A5429225F5EFE700154C86 /* eversafe_b5507150-6eb4-4f15-a52c-2458d4488e63.framework in Embed Frameworks */,
+				E6A5429325F5EFE700154C86 /* eversafe_ee3dc657-3257-43e5-a6fa-d96fdc9dc06c.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -846,6 +861,14 @@
 		E67C527B25EE911E00CD56B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E67C527C25EE911E00CD56B1 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		E67C52B025EE91FA00CD56B1 /* Appdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appdata.swift; sourceTree = "<group>"; };
+		E6A5427625F5DAF500154C86 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		E6A5427D25F5ECA100154C86 /* eversafe_basic_a6e60bbb-c9c1-4f68-9681-f8358a8df365.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "eversafe_basic_a6e60bbb-c9c1-4f68-9681-f8358a8df365.framework"; sourceTree = "<group>"; };
+		E6A5428225F5EFB000154C86 /* eversafe_b5507150-6eb4-4f15-a52c-2458d4488e63.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "eversafe_b5507150-6eb4-4f15-a52c-2458d4488e63.framework"; sourceTree = "<group>"; };
+		E6A5428325F5EFB100154C86 /* eversafe_9f9ca560-fcbd-4dca-9b93-29ccf3c3dc6f.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "eversafe_9f9ca560-fcbd-4dca-9b93-29ccf3c3dc6f.framework"; sourceTree = "<group>"; };
+		E6A5428425F5EFB200154C86 /* eversafe_951d1d38-ed86-41c1-8edf-a1bd3a21dc45.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "eversafe_951d1d38-ed86-41c1-8edf-a1bd3a21dc45.framework"; sourceTree = "<group>"; };
+		E6A5428525F5EFB200154C86 /* eversafe_4f4188cf-59b7-41e8-b217-d0c6b1ea2adf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "eversafe_4f4188cf-59b7-41e8-b217-d0c6b1ea2adf.framework"; sourceTree = "<group>"; };
+		E6A5428625F5EFB300154C86 /* eversafe_b28f383e-738e-418b-96d4-c336bc76dff9.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "eversafe_b28f383e-738e-418b-96d4-c336bc76dff9.framework"; sourceTree = "<group>"; };
+		E6A5428725F5EFB400154C86 /* eversafe_ee3dc657-3257-43e5-a6fa-d96fdc9dc06c.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = "eversafe_ee3dc657-3257-43e5-a6fa-d96fdc9dc06c.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1628,6 +1651,7 @@
 		E67C4F4125EE7C0F00CD56B1 /* eversafe */ = {
 			isa = PBXGroup;
 			children = (
+				E6A5427925F5E68F00154C86 /* module */,
 				E67C4F4225EE7C0F00CD56B1 /* include */,
 				E67C4F4825EE7C0F00CD56B1 /* lib */,
 			);
@@ -1832,6 +1856,7 @@
 		E67C523525EE90A100CD56B1 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				E6A5427625F5DAF500154C86 /* Validation.swift */,
 				E67C523925EE90C800CD56B1 /* Authorization.swift */,
 				E67C523E25EE90CF00CD56B1 /* CertService.swift */,
 				E67C523B25EE90CB00CD56B1 /* DataWebSend.swift */,
@@ -2018,6 +2043,36 @@
 				E67C527C25EE911E00CD56B1 /* MainVC.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		E6A5427925F5E68F00154C86 /* module */ = {
+			isa = PBXGroup;
+			children = (
+				E6A5428125F5EFA400154C86 /* dynamic */,
+				E6A5427A25F5E69700154C86 /* basic */,
+			);
+			path = module;
+			sourceTree = "<group>";
+		};
+		E6A5427A25F5E69700154C86 /* basic */ = {
+			isa = PBXGroup;
+			children = (
+				E6A5427D25F5ECA100154C86 /* eversafe_basic_a6e60bbb-c9c1-4f68-9681-f8358a8df365.framework */,
+			);
+			path = basic;
+			sourceTree = "<group>";
+		};
+		E6A5428125F5EFA400154C86 /* dynamic */ = {
+			isa = PBXGroup;
+			children = (
+				E6A5428525F5EFB200154C86 /* eversafe_4f4188cf-59b7-41e8-b217-d0c6b1ea2adf.framework */,
+				E6A5428325F5EFB100154C86 /* eversafe_9f9ca560-fcbd-4dca-9b93-29ccf3c3dc6f.framework */,
+				E6A5428425F5EFB200154C86 /* eversafe_951d1d38-ed86-41c1-8edf-a1bd3a21dc45.framework */,
+				E6A5428625F5EFB300154C86 /* eversafe_b28f383e-738e-418b-96d4-c336bc76dff9.framework */,
+				E6A5428225F5EFB000154C86 /* eversafe_b5507150-6eb4-4f15-a52c-2458d4488e63.framework */,
+				E6A5428725F5EFB400154C86 /* eversafe_ee3dc657-3257-43e5-a6fa-d96fdc9dc06c.framework */,
+			);
+			path = dynamic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2444,6 +2499,7 @@
 				E67C4E3325EE7BB100CD56B1 /* CustomKeypadBtnViewController.m in Sources */,
 				E67C498725EE74FF00CD56B1 /* SceneDelegate.swift in Sources */,
 				E67C528C25EE911E00CD56B1 /* CertImportVC.swift in Sources */,
+				E6A5427725F5DAF500154C86 /* Validation.swift in Sources */,
 				E67C524425EE90CF00CD56B1 /* DataWebSend.swift in Sources */,
 				E67C521F25EE8E9B00CD56B1 /* UIApplication.swift in Sources */,
 				E67C520925EE8DBC00CD56B1 /* Color.swift in Sources */,
@@ -2622,9 +2678,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/coocon/SASLibrary/Frameworks",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/eightbyte",
-					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/FaceSystem/framework",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/face/framework",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/eversafe/module/basic",
+					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/eversafe/module/dynamic",
 				);
 				INFOPLIST_FILE = SMART_SB_IOS_APP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2643,7 +2700,6 @@
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/Koscom/lib/KeySharpiPhoneUtil\\ lib/Release-iphoneos",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/Koscom/lib/KeySharpiPhone\\ lib/Release-iphoneos",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/fds",
-					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/eversafe_ios_library-3.8.1/lib",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/koscom/lib/FingerprintCertManager\\ lib",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/koscom/lib/FingerprintCertManager\\ lib",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/koscom/lib/SecureData\\ lib/Release-iphoneos",
@@ -2676,9 +2732,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/coocon/SASLibrary/Frameworks",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/eightbyte",
-					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/FaceSystem/framework",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/face/framework",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/eversafe/module/basic",
+					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/eversafe/module/dynamic",
 				);
 				INFOPLIST_FILE = SMART_SB_IOS_APP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2697,7 +2754,6 @@
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/Koscom/lib/KeySharpiPhoneUtil\\ lib/Release-iphoneos",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/Koscom/lib/KeySharpiPhone\\ lib/Release-iphoneos",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/fds",
-					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/eversafe_ios_library-3.8.1/lib",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/koscom/lib/FingerprintCertManager\\ lib",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/koscom/lib/FingerprintCertManager\\ lib",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/koscom/lib/SecureData\\ lib/Release-iphoneos",

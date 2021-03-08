@@ -1,0 +1,6 @@
+framework module EversafeDynamicModule {
+  umbrella header "EversafeDynamicModule.h"
+
+  export *
+  module * { export * }
+}

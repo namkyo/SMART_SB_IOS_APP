@@ -1,0 +1,6 @@
+framework module EversafeBasicModule {
+  umbrella header "EversafeBasicModule.h"
+
+  export *
+  module * { export * }
+}

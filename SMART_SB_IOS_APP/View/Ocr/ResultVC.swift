@@ -41,7 +41,6 @@ class ResultVC: UIViewController {
     var keyboardShown:Bool = false // 키보드 상태 확인
     var originY:CGFloat? // 오브젝트의 기본 위치
 
-        
     
     //터치시 키보드 내림
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -126,8 +125,8 @@ class ResultVC: UIViewController {
                    let encryptedData = Data(base64Encoded: lcI), // 암호화 값
                    let plainText = PACECRControl().decryptSEED128Data(encryptedData) {
                     
-                    var firstIndex = plainText.index(plainText.startIndex, offsetBy: 0)
-                    var lastIndex = plainText.index(plainText.startIndex, offsetBy: 9)
+                    let firstIndex = plainText.index(plainText.startIndex, offsetBy: 0)
+                    let lastIndex = plainText.index(plainText.startIndex, offsetBy: 9)
                     let mobCom = "\(plainText[firstIndex..<lastIndex])***-**"
                     stackView.addArrangedSubview(setTextView(title: "운전면허증 번호", content:mobCom))
                     callbackData["driveNo"] = Function.AES256Encrypt(val: plainText)
@@ -139,12 +138,15 @@ class ResultVC: UIViewController {
                    let encryptedData = Data(base64Encoded: lcI), // 암호화 값
                    let plainText = PACECRControl().decryptSEED128Data(encryptedData) {
                     
-                    var firstIndex = plainText.index(plainText.startIndex, offsetBy: 0)
-                    var lastIndex = plainText.index(plainText.startIndex, offsetBy: 9)
-                    let mobCom = "\(plainText[firstIndex..<lastIndex])***-**"
-                    stackView.addArrangedSubview(setTextView(title: "secureNo 번호", content:mobCom))
+//                    let firstIndex = plainText.index(plainText.startIndex, offsetBy: 0)
+//                    let lastIndex = plainText.index(plainText.startIndex, offsetBy: 9)
+//                    let mobCom = "\(plainText[firstIndex..<lastIndex])***-**"
+                    stackView.addArrangedSubview(setTextView(title: "secureNo 번호", content:plainText))
                     callbackData["secureNo"] = Function.AES256Encrypt(val: plainText)
                 }
+            }else{
+                callbackData["driveNo"] = ""
+                callbackData["secureNo"] = ""
             }
             
         }
