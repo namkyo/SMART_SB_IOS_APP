@@ -384,6 +384,7 @@
 		74D686BD52F5D2CC0839518B /* Pods_SMART_SB_IOS_APP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SMART_SB_IOS_APP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		817DC344E798C71068B3B3BF /* Pods-SMART_SB_IOS_APP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMART_SB_IOS_APP.release.xcconfig"; path = "Target Support Files/Pods-SMART_SB_IOS_APP/Pods-SMART_SB_IOS_APP.release.xcconfig"; sourceTree = "<group>"; };
 		E04B4BB2A8EE1C3551702309 /* Pods-SMART_SB_IOS_APP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SMART_SB_IOS_APP.debug.xcconfig"; path = "Target Support Files/Pods-SMART_SB_IOS_APP/Pods-SMART_SB_IOS_APP.debug.xcconfig"; sourceTree = "<group>"; };
+		E60F75A225F711CA0034067F /* SMART_SB_IOS_APP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SMART_SB_IOS_APP.entitlements; sourceTree = "<group>"; };
 		E67C498125EE74FF00CD56B1 /* SMART_SB_IOS_APP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SMART_SB_IOS_APP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E67C498425EE74FF00CD56B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E67C498625EE74FF00CD56B1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -944,6 +945,7 @@
 		E67C498325EE74FF00CD56B1 /* SMART_SB_IOS_APP */ = {
 			isa = PBXGroup;
 			children = (
+				E60F75A225F711CA0034067F /* SMART_SB_IOS_APP.entitlements */,
 				E67C523525EE90A100CD56B1 /* Service */,
 				E67C51F225EE8C7E00CD56B1 /* Core */,
 				E67C51ED25EE8C4700CD56B1 /* Define */,
@@ -2671,6 +2673,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SMART_SB_IOS_APP/SMART_SB_IOS_APP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C948P7X2WC;
 				ENABLE_BITCODE = NO;
@@ -2710,7 +2713,7 @@
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/fds/lib",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/eversafe/lib",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = kr.co.smartSB.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SMART_SB_IOS_APP-Bridging-Header.h";
@@ -2725,6 +2728,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SMART_SB_IOS_APP/SMART_SB_IOS_APP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C948P7X2WC;
 				ENABLE_BITCODE = NO;
@@ -2764,7 +2768,7 @@
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/fds/lib",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/eversafe/lib",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = kr.co.smartSB.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";

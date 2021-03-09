@@ -301,7 +301,7 @@ class Authorization {
                                  }
                              }else{
                                  resultData["msg"]=msg
-                                 DataWebSend().resultWebSend(resultCd: "9998", dicParmas:resultData, resultFunc : sf ,webView: webView)
+                                 DataWebSend().resultWebSend(resultCd: "9995", dicParmas:resultData, resultFunc : sf ,webView: webView)
                              }
                          }
                         
@@ -378,7 +378,7 @@ class Authorization {
                                  }
                              }else{
                                  resultData["msg"]=msg
-                                 DataWebSend().resultWebSend(resultCd: "9998", dicParmas:resultData, resultFunc : sf ,webView: webView)
+                                 DataWebSend().resultWebSend(resultCd: "9995", dicParmas:resultData, resultFunc : sf ,webView: webView)
                              }
                          }
                         
@@ -496,7 +496,7 @@ class Authorization {
                                     }
                                 }else{
                                     resultData["msg"]=msg
-                                    DataWebSend().resultWebSend(resultCd: "9998", dicParmas:resultData, resultFunc : sf ,webView: webView)
+                                    DataWebSend().resultWebSend(resultCd: "9995", dicParmas:resultData, resultFunc : sf ,webView: webView)
                                 }
                             }
                         }else{

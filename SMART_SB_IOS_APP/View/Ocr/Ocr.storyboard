@@ -183,7 +183,7 @@
                                     <constraint firstAttribute="height" constant="220.5" id="tU5-rY-tfa"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="본인확익을 위해 주민등록증 또는 운전면허증을 준비해주세요. " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4DR-Ia-px3">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="본인확인을 위해 주민등록증 또는 운전면허증을 준비해주세요. " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4DR-Ia-px3">
                                 <rect key="frame" x="26" y="78.5" width="263" height="67"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="263" id="DjB-dG-DpN"/>
