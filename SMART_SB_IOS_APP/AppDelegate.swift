@@ -150,7 +150,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, EversafeDelegate {
     }
     
     internal func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-        if url.scheme == "smartapp" {
+        Log.print("sk : \(url.scheme)")
+        if url.scheme == "smartsbbank" {
             guard let componets = NSURLComponents(url: url, resolvingAgainstBaseURL: true) else { return false}
             guard let params = componets.queryItems else { return false }
             if let type = params.first(where: { $0.name == "type"})?.value {

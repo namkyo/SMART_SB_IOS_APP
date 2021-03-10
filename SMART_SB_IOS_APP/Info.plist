@@ -27,7 +27,7 @@
 			<string>kr.co.smartSB.app</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>smartbank</string>
+				<string>smartsbbank</string>
 			</array>
 		</dict>
 	</array>
