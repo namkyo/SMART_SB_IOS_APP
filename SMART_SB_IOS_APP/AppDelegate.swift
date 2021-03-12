@@ -15,16 +15,16 @@ import FirebaseMessaging
 class AppDelegate: UIResponder, UIApplicationDelegate, EversafeDelegate {
     func eversafeDidFailWithErrorCode(_ errorCode: String!, errorMessage: String!) {
         Log.print("errorCode : \(errorCode) , errorMessage : \(errorMessage)")
-//        yn = false
-//        DispatchQueue.main.async {
-//        UIApplication.shared.showAlert(message:errorMessage, confirmHandler: {
-//                exit(0)
-//        })
-//        }
+        yn = false
+            DispatchQueue.main.async {
+            UIApplication.shared.showAlert(message:errorMessage, confirmHandler: {
+                    exit(0)
+            })
+        }
     }
     
     func eversafeDidFindThreats(_ threats: [Any]!) {
-        
+            Log.print("eversafeDidFindThreats threats : \(threats)")
         for tt in threats {
             yn = false
             DispatchQueue.main.async {
@@ -69,8 +69,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, EversafeDelegate {
         //위변조 탐지
         var userinfo : Dictionary<AnyHashable,Any> = [AnyHashable:Any]()
         userinfo["phoneNum"]=true
-        userinfo["blkdg"]=true
-        userinfo["adb"]=true
+        //userinfo["blkdg"]=true
+        //userinfo["adb"]=true
+        
+        Log.print("에버세이프 초기화")
         Eversafe.sharedInstance()?.initialize(withBaseUrl: Constants.EVERSAFE.url, appId: Constants.EVERSAFE.appid, userInfo: userinfo)
         Eversafe.sharedInstance()?.delegate=self
         return true

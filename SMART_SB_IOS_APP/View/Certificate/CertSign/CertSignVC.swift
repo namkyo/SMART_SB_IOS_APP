@@ -90,10 +90,19 @@ class CertSignVC: UIViewController {
                         pinStr, text in
                         Log.print("공동인증서 입력후...")
                         Log.print("공동인증서 비밀번호 enc Data: \(text)")
-                        //Log.print("공동인증서 비밀번호 dec Data: \(Function.AES256Decrypt(val: text))")
+                        Log.print("공동인증서 입력실명 dec Data: \(self.parameters["rbrno"] as? String)!")
                         
                         //전자서명
                         if self.mode == 2 {
+                            //주민번호 검증
+                            if !checkRrn(index: self.index, text: text,rrn: "TCZrYbFvH9vBQTphRq9Akd==") {
+                            //if !checkRrn(index: self.index, text: text,rrn: (self.parameters["rbrno"] as? String)!) {
+                                self.dismiss(animated: true, completion: {
+                                    self.failed?("9999,","이용자랑 인증서 실명번호가 일치하지 않습니다.")
+                                })
+                                return
+                            }
+                            
                             // 비밀번호 체크
                             if !self.checkPassword(index: self.index, text: text) {
                                 self.dismiss(animated: true, completion: {
@@ -101,13 +110,7 @@ class CertSignVC: UIViewController {
                                 })
                                 return
                             }
-                            //주민번호 검증
-                            if !checkRrn(index: self.index, text: text,rrn: (self.parameters["rbrno"] as? String)!) {
-                                self.dismiss(animated: true, completion: {
-                                    self.failed?("9999,","이용자랑 인증서 실명번호가 일치하지 않습니다.")
-                                })
-                                return
-                            }
+                            
                             
                             resultData=self.signCert(password: text)
                             Log.print("공동인증서 서명결과 Data: \(resultData)")
@@ -126,12 +129,12 @@ class CertSignVC: UIViewController {
                             
                             var minwon: JSON = JSON(self.parameters["MinWon_1"] as Any)
                             //주민번호 검증
-                            if !checkRrn(index: self.index, text: text,rrn: minwon["Input"]["주민등록번호"].string!) {
-                                self.dismiss(animated: true, completion: {
-                                    self.failed?("9999,","이용자랑 인증서 실명번호가 일치하지 않습니다.")
-                                })
-                                return
-                            }
+//                            if !checkRrn(index: self.index, text: text,rrn: minwon["Input"]["주민등록번호"].string!) {
+//                                self.dismiss(animated: true, completion: {
+//                                    self.failed?("9999,","이용자랑 인증서 실명번호가 일치하지 않습니다.")
+//                                })
+//                                return
+//                            }
                             
                             resultData["password"]=text
                             resultData["name"]=self.certContent?.getSubject()

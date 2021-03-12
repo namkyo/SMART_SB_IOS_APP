@@ -9,7 +9,7 @@ import Foundation
 
 enum Constants {
     
-    static var MODE: String = "D"
+    static let MODE: String = "R"
     
     /*
      *  검증설정 checkPinValidation
@@ -31,7 +31,8 @@ enum Constants {
      *  에버세이프 위변조 접속 정보
      */
     enum EVERSAFE{
-        static let url :String  = "http://112.216.114.150:4443/eversafe"
+        static let url :String  = "https://smart-i.smartbank.co.kr:4442/eversafe"
+        static let url_R :String  = "https://smart-i.smartbank.co.kr:4443/eversafe"
         static let token: String = "EVERSAFE_TOKEN"
         static let appid: String = "51E260532B184455"
     }

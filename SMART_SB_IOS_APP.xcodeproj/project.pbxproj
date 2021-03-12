@@ -2713,7 +2713,7 @@
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/fds/lib",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/eversafe/lib",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = kr.co.smartSB.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SMART_SB_IOS_APP-Bridging-Header.h";
@@ -2768,7 +2768,7 @@
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/fds/lib",
 					"$(PROJECT_DIR)/SMART_SB_IOS_APP/Lib/eversafe/lib",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.8;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = kr.co.smartSB.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";

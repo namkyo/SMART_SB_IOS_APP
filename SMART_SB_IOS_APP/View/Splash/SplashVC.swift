@@ -38,11 +38,11 @@ class SplashVC: UIViewController {
             
         
         let ok = UIAlertAction(title: "개발서버", style: .default, handler: {_ in
-            Constants.MODE="D"
+//            Constants.MODE="D"
             self.nertworkCheck()
         })
         let cancel = UIAlertAction(title: "운영서버", style: .cancel, handler: {_ in
-            Constants.MODE="R"
+//            Constants.MODE="R"
             self.nertworkCheck()
         })
         alert_start.addAction(ok)
@@ -54,19 +54,10 @@ class SplashVC: UIViewController {
         super.viewDidAppear(true)
         Log.print("SplashVC viewDidAppear")
         
-        seletServer()
-//        nertworkCheck()
+        //seletServer()
+        nertworkCheck()
     }
     
-    func eversafe(){
-        //위변조 탐지
-        var userinfo : Dictionary<AnyHashable,Any> = [AnyHashable:Any]()
-        userinfo["phoneNum"]=true
-        userinfo["blkdg"]=true
-        userinfo["adb"]=true
-        //Eversafe.init(Constants.EVERSAFE.url,Constants.EVERSAFE.appid,userinfo)
-        Eversafe.sharedInstance()?.initialize(withBaseUrl: Constants.EVERSAFE.url, appId: Constants.EVERSAFE.appid, userInfo: userinfo)
-    }
     func nertworkCheck(){
         //인터넷 연결상태 체크
         if (Function.isInternetAvailable)() {
@@ -77,7 +68,6 @@ class SplashVC: UIViewController {
             //메인화면 이동
             //let appDelegate  = UIApplication.shared.delegate as! AppDelegate
             
-            eversafe()
             if myUserDefaults.string(forKey: Constants.UserDefaultsKey.CUST_NO) == nil {
                 SceneCoordinator().transition(to: "Access", using: .root, animated: true)
             } else {
