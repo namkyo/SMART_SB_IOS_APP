@@ -54,8 +54,24 @@ class SplashVC: UIViewController {
         super.viewDidAppear(true)
         Log.print("SplashVC viewDidAppear")
         
-        //seletServer()
-        nertworkCheck()
+        
+        
+        let time = DispatchTime.now() + .seconds(5)
+        DispatchQueue.main.asyncAfter(deadline: time) {
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            
+            let eversafeFilterYn :Bool = appDelegate!.eversafeFilterYn
+            Log.print("eversafeFilterYn : \(eversafeFilterYn)")
+            Log.print("위변조 탐색 결과 \(eversafeFilterYn)")
+            
+            if !eversafeFilterYn {
+                //seletServer()
+                self.nertworkCheck()
+            }
+        }
+       
+        
+        
     }
     
     func nertworkCheck(){
@@ -64,7 +80,6 @@ class SplashVC: UIViewController {
             Log.print("인터넷 정상")
         //internet avilable
             //대기시간
-            sleep(3)
             //메인화면 이동
             //let appDelegate  = UIApplication.shared.delegate as! AppDelegate
             

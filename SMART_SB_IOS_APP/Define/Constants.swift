@@ -31,10 +31,10 @@ enum Constants {
      *  에버세이프 위변조 접속 정보
      */
     enum EVERSAFE{
-        static let url :String  = "https://smart-i.smartbank.co.kr:4442/eversafe"
+        static let url :String  = "https://smart-i.smartbank.co.kr:4443/eversafe"
         static let url_R :String  = "https://smart-i.smartbank.co.kr:4443/eversafe"
         static let token: String = "EVERSAFE_TOKEN"
-        static let appid: String = "51E260532B184455"
+        static let appid: String = "7BE26CA5704EC01C"
     }
     
     /**

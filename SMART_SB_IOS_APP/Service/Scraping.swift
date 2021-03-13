@@ -226,32 +226,32 @@ class Scraping : NSObject , SASManagerDelegate {
                     }
                 })
             }
-            self.resultData["MinWon_1"]=output
+            self.resultData["MinWon_1"]=jsonRaw
             break;
         case 2:
             IndicatorView().textChange(msg: "3..10 [민원24] : 초본출력")
             Log.print("2.초본")
-            self.resultData["MinWon_2"]=output
+            self.resultData["MinWon_2"]=jsonRaw
             break;
         case 3:
             IndicatorView().textChange(msg: "4..10 [민원24] : 로그아웃")
             Log.print("3.로그아웃")
-            self.resultData["MinWon_3"]=output
+            self.resultData["MinWon_3"]=jsonRaw
             break;
         case 4:
             IndicatorView().textChange(msg: "5..10 [건강보험공단] : 로그인")
             Log.print("4.로그인")
-            self.resultData["NHIS_1"]=output
+            self.resultData["NHIS_1"]=jsonRaw
             break;
         case 5:
             IndicatorView().textChange(msg: "6..10 [건강보험공단] : 납부내역")
             Log.print("5.납부내역")
-            self.resultData["NHIS_2"]=output
+            self.resultData["NHIS_2"]=jsonRaw
             break;
         case 6:
             IndicatorView().textChange(msg: "7..10 [건강보험공단] : 자격득실확인서")
             Log.print("6.자격득실")
-            self.resultData["NHIS_3"]=output
+            self.resultData["NHIS_3"]=jsonRaw
             
             if "00000000" == errorCode {
                 if let temp = JSON(output)["Result"]["사업장관리번호"].string {
@@ -270,22 +270,22 @@ class Scraping : NSObject , SASManagerDelegate {
         case 7:
             IndicatorView().textChange(msg: "7..10 [홈택스] : 공동인증서등록")
             Log.print("7.공동인증서등록")
-            self.resultData["HOME_1"]=output
+            self.resultData["HOME_1"]=jsonRaw
             break;
         case 8:
             IndicatorView().textChange(msg: "8..10 [홈택스] : 로그인")
             Log.print("8.홈택스로그인")
-            self.resultData["HOME_2"]=output
+            self.resultData["HOME_2"]=jsonRaw
             break;
         case 9:
             IndicatorView().textChange(msg: "9..10 [홈택스] : 부가가치세증명원")
             Log.print("9.홈택스 1")
-            self.resultData["HOME_3"]=output
+            self.resultData["HOME_3"]=jsonRaw
             break;
         case 10:
             IndicatorView().textChange(msg: "10..10 [홈택스] : 소득금액증명원")
             Log.print("10. 홈택스 2")
-            self.resultData["HOME_4"]=output
+            self.resultData["HOME_4"]=jsonRaw
             IndicatorView().hideProgress2()
             
             self.scrapingcompleteHandler!( "0000",self.resultData)
