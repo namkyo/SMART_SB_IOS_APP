@@ -26,7 +26,7 @@ class Scraping : NSObject , SASManagerDelegate {
     func runScraping(params:Dictionary<String, Any>,cert:Dictionary<String, String>,handler: @escaping ((String,Dictionary<String,Any>) -> Void)) {
         
         IndicatorView().hideProgress2()
-        IndicatorView().loading2(flag: "ON",msg: "1..10 [민원24] : 보안문자 요청")
+        IndicatorView().loading2(flag: "ON",msg: "스크랩핑 진행중입니다 (1/12) 보안문자 요청")
         
         
         parameters=params
@@ -197,9 +197,8 @@ class Scraping : NSObject , SASManagerDelegate {
                              },completeHandler: {
                                 secuerStr in
                                 Log.print("보안문자 완료 \(secuerStr)")
-                                IndicatorView().textChange(msg: "1..10 [민원24] : 보안문자 검증")
+                                IndicatorView().textChange(msg: "스크랩핑 진행중입니다 (2/12) 보안문자 검증")
                                 self.minwonScraping02(params: self.parameters, cert: self.parameters_cert,secuerStr: secuerStr["보안문자"]!)
-                                self.nhisScraping(params: self.parameters, cert: self.parameters_cert)
                                 
                              })
                     }
@@ -213,7 +212,7 @@ class Scraping : NSObject , SASManagerDelegate {
                 }
                 break;
         case 1:
-            IndicatorView().textChange(msg: "2..10 [민원24] : 비회원로그인")
+            IndicatorView().textChange(msg: "스크랩핑 진행중입니다 (3/12) 민원24 로그인")
             
             Log.print("1.비회원로그인")
             //보안코드 오타
@@ -225,31 +224,33 @@ class Scraping : NSObject , SASManagerDelegate {
                         Scraping().runScraping(params: self.parameters,cert: self.parameters_cert,handler: self.scrapingcompleteHandler!)
                     }
                 })
+            }else{
+                self.nhisScraping(params: self.parameters, cert: self.parameters_cert)
             }
             self.resultData["MinWon_1"]=jsonRaw
             break;
         case 2:
-            IndicatorView().textChange(msg: "3..10 [민원24] : 초본출력")
+            IndicatorView().textChange(msg: "스크랩핑 진행중입니다 (4/12) 초본출력")
             Log.print("2.초본")
             self.resultData["MinWon_2"]=jsonRaw
             break;
         case 3:
-            IndicatorView().textChange(msg: "4..10 [민원24] : 로그아웃")
+            IndicatorView().textChange(msg: "스크랩핑 진행중입니다 (5/12) 민원24 로그아웃")
             Log.print("3.로그아웃")
             self.resultData["MinWon_3"]=jsonRaw
             break;
         case 4:
-            IndicatorView().textChange(msg: "5..10 [건강보험공단] : 로그인")
+            IndicatorView().textChange(msg: "스크랩핑 진행중입니다 (6/12) 건강보험공단 로그인")
             Log.print("4.로그인")
             self.resultData["NHIS_1"]=jsonRaw
             break;
         case 5:
-            IndicatorView().textChange(msg: "6..10 [건강보험공단] : 납부내역")
+            IndicatorView().textChange(msg: "스크랩핑 진행중입니다 (7/12) 납부내역")
             Log.print("5.납부내역")
             self.resultData["NHIS_2"]=jsonRaw
             break;
         case 6:
-            IndicatorView().textChange(msg: "7..10 [건강보험공단] : 자격득실확인서")
+            IndicatorView().textChange(msg: "스크랩핑 진행중입니다 (8/12) 자격득실확인서")
             Log.print("6.자격득실")
             self.resultData["NHIS_3"]=jsonRaw
             
@@ -268,22 +269,22 @@ class Scraping : NSObject , SASManagerDelegate {
             
             break;
         case 7:
-            IndicatorView().textChange(msg: "7..10 [홈택스] : 공동인증서등록")
+            IndicatorView().textChange(msg: "스크랩핑 진행중입니다 (9/12) 공동인증서등록")
             Log.print("7.공동인증서등록")
             self.resultData["HOME_1"]=jsonRaw
             break;
         case 8:
-            IndicatorView().textChange(msg: "8..10 [홈택스] : 로그인")
+            IndicatorView().textChange(msg: "스크랩핑 진행중입니다 (10/12) 홈택스 로그인")
             Log.print("8.홈택스로그인")
             self.resultData["HOME_2"]=jsonRaw
             break;
         case 9:
-            IndicatorView().textChange(msg: "9..10 [홈택스] : 부가가치세증명원")
+            IndicatorView().textChange(msg: "스크랩핑 진행중입니다 (11/12) 부가가치세증명원")
             Log.print("9.홈택스 1")
             self.resultData["HOME_3"]=jsonRaw
             break;
         case 10:
-            IndicatorView().textChange(msg: "10..10 [홈택스] : 소득금액증명원")
+            IndicatorView().textChange(msg: "스크랩핑 진행중입니다 (12/12) 소득금액증명원")
             Log.print("10. 홈택스 2")
             self.resultData["HOME_4"]=jsonRaw
             IndicatorView().hideProgress2()

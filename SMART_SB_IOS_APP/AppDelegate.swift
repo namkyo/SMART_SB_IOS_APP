@@ -10,32 +10,44 @@ import Safetoken
 import Then
 import Firebase
 import FirebaseMessaging
+import BackgroundTasks
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, EversafeDelegate {
     func eversafeDidFailWithErrorCode(_ errorCode: String!, errorMessage: String!) {
         Log.print("errorCode : \(errorCode) , errorMessage : \(errorMessage)")
-        eversafeFilterYn = true
-        Log.print("eversafeFilterYn : \(eversafeFilterYn)")
-            DispatchQueue.main.async {
-                UIApplication.shared.showAlert(message:errorMessage, confirmHandler: {
-                    exit(0)
-                })
-            }
+        
+        if Constants.EVERSAFE_MODE {
+            eversafeFilterYn = true
+            Log.print("eversafeFilterYn : \(eversafeFilterYn)")
+                DispatchQueue.main.async {
+                    UIApplication.shared.showAlert(message:errorMessage, confirmHandler: {
+                        exit(0)
+                    })
+                }
+        } else {
+            Log.print("위변조 패스")
+        }
     }
     
     func eversafeDidFindThreats(_ threats: [Any]!) {
             Log.print("eversafeDidFindThreats threats : \(threats)")
-        for tt in threats {
-            eversafeFilterYn = true
-            Log.print("eversafeFilterYn : \(eversafeFilterYn)")
-            DispatchQueue.main.async {
-                UIApplication.shared.showAlert(message: (tt as AnyObject).localizedDescription, confirmHandler: {
-                    exit(0)
-                })
-            return
+        
+        if Constants.EVERSAFE_MODE {
+            for tt in threats {
+                eversafeFilterYn = true
+                Log.print("eversafeFilterYn : \(eversafeFilterYn)")
+                DispatchQueue.main.async {
+                    UIApplication.shared.showAlert(message: (tt as AnyObject).localizedDescription, confirmHandler: {
+                        exit(0)
+                    })
+                return
+                }
             }
+        }else{
+            Log.print("위변조 패스")
         }
+        
     }
     var eversafeFilterYn:Bool = false
     var window: UIWindow?
@@ -58,12 +70,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, EversafeDelegate {
         
         UIApplication.shared.applicationIconBadgeNumber = 0 //알림배지 초기화
         
+        
+        
+        
         certManager = CertManager.init()
         certManager.useIPv6=true
         
-        
         setUserDefaults()
         setPush(application)
+        
+        
+        
+        
         
         /**************************** FDS service start *****************************/
         ixcSecureManager.initLicense(Configuration.IXC_LICENSE, andCustomID: Configuration.IXC_CUSTOMER_ID)
@@ -76,11 +94,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, EversafeDelegate {
         
         
         Log.print("에버세이프 초기화")
-        Eversafe.sharedInstance()?.initialize(withBaseUrl: Constants.EVERSAFE.url, appId: Constants.EVERSAFE.appid, userInfo: userinfo)
+        if Constants.MODE == "R"{
+            Eversafe.sharedInstance()?.initialize(withBaseUrl: Constants.EVERSAFE.url_R, appId: Constants.EVERSAFE.appid, userInfo: userinfo)
+        }else if Constants.MODE == "D" || Constants.MODE == "H" {
+                Eversafe.sharedInstance()?.initialize(withBaseUrl: Constants.EVERSAFE.url_D, appId: Constants.EVERSAFE.appid, userInfo: userinfo)
+        }else{
+            UIApplication.shared.showAlert(message:"비정상접근", confirmHandler: {
+                exit(0)
+            })
+        }
+        
         Eversafe.sharedInstance()?.delegate=self
         let time = DispatchTime.now() + .seconds(5)
-        DispatchQueue.main.asyncAfter(deadline: time) {
-        }
+//        DispatchQueue.main.asyncAfter(deadline: time) {
+//        }
         return true
     }
     
@@ -251,6 +278,10 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
             }
         }
     }
+    
+    
+
+    
 }
 
 extension AppDelegate : MessagingDelegate {

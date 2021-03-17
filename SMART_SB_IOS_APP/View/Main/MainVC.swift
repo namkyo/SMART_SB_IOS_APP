@@ -88,10 +88,10 @@ class MainVC: UIViewController,UIImagePickerControllerDelegate, UINavigationCont
             Log.print("mode error")
         }
         
-        //고객번호 없을시 약관동의 페이지
-        if myUserDefaults.string(forKey: Constants.UserDefaultsKey.CUST_NO) == nil {
-            urlString = Constants.PageUrl.WEB_MAIN_D+Constants.PageUrl.WEB_SIGN_UP
-        }
+//        //고객번호 없을시 약관동의 페이지
+//        if myUserDefaults.string(forKey: Constants.UserDefaultsKey.CUST_NO) == nil {
+//            urlString = Constants.PageUrl.WEB_MAIN_R+Constants.PageUrl.WEB_SIGN_UP
+//        }
         
         if urlString == ""{
             UIApplication.shared.showAlert(message: "접속 정보 에러",confirmHandler: {
@@ -109,7 +109,7 @@ class MainVC: UIViewController,UIImagePickerControllerDelegate, UINavigationCont
     //뷰 생성 끝나고
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        print("MainVC viewDidAppear : ")
+        Log.print("MainVC viewDidAppear : ")
     }
     
     
@@ -134,11 +134,11 @@ class MainVC: UIViewController,UIImagePickerControllerDelegate, UINavigationCont
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        print("MainVC viewWillDisappear")
+        Log.print("MainVC viewWillDisappear")
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(true)
-        print("MainVC viewDidDisappear")
+        Log.print("MainVC viewDidDisappear")
     }
 }
 
@@ -187,7 +187,12 @@ extension MainVC: WKScriptMessageHandler {
                             break
                         case Constants.ServiceCode.OCR:
                             Log.print(message: "OCR ")
-                            OcrService().ocrGo(params: params, sf: sf, ff: ff, webView: webView)
+                            
+                            //카메라 권한
+                                
+                            UIApplication.shared.requestCameraPermission(completeHandler: {
+                                OcrService().ocrGo(params: params, sf: sf, ff: ff, webView: self.webView)
+                            })
                             break
                         case Constants.ServiceCode.SIGN_CERT_MANAGE:
                             Log.print(message: "SIGN_CERT_MANAGE ")

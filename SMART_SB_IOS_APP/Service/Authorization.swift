@@ -204,8 +204,40 @@ class Authorization {
                             resultData["SIGN"] = tnp.encodedMessage
                             resultData["RANDOM_KEY"] = randomKey
                             resultData["AUTH_MESG"] = authMesg
-                            resultData["CUST_NO"] = UserDefaults.standard.string(forKey: "custNo")
-                            DataWebSend().resultWebSend(resultCd: "0000", dicParmas:resultData, resultFunc : sf ,webView: webView)
+                            let custNo = UserDefaults.standard.string(forKey: "custNo")
+                            resultData["CUST_NO"]=custNo
+                            
+                            Eversafe.sharedInstance()?.getVerificationToken({
+                                result,token in
+                                /**
+                                *검증 토큰이 취득된 상태입니다. 토큰을 사용자 요청과 함께 서버로 전송하면 됩니다. * result: 토큰의 상태값을 나타내는 결과 상태값 입니다.
+                                * verificationToken: NSData형태로 전송되며 서버로 전송시 Base64Encoding을
+                                필요로 할 수 있습니다.
+                                */
+                                
+                                guard let base64Token = token?.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0)) else {
+                                    Log.print("토큰검증실패")
+                                    return
+                                }
+                                
+                                guard ((appDelegate.tc?.getToken()?.uid) != nil) else {
+                                    DataWebSend().resultWebSend(resultCd: "9990", dicParmas:resultData, resultFunc : sf ,webView: webView)
+                                    return
+                                }
+                                
+                                
+                                print("result : \(String(describing: result))")
+                                print("base64Token : \(base64Token)")
+                                
+                                Validation().tokenValidation(token: base64Token, custNo: custNo!) { (result,msg) in
+                                    if result {
+                                        DataWebSend().resultWebSend(resultCd: "0000", dicParmas:resultData, resultFunc : sf ,webView: webView)
+                                    }
+                                }
+                            }, timeout: 10000)
+                            
+                            
+                            
                         }else{
                             DataWebSend().resultWebSend(resultCd: "9990", dicParmas:resultData, resultFunc : sf ,webView: webView)
                         }

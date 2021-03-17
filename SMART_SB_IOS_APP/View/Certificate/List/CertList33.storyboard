@@ -12,7 +12,7 @@
         <!--Cert ListVC-->
         <scene sceneID="dwa-s0-KPc">
             <objects>
-                <viewController storyboardIdentifier="CertListVC" modalPresentationStyle="overCurrentContext" id="zeU-yk-KKt" customClass="CertListVC" customModule="SMART_SB_IOS_APP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CertList33VC" modalPresentationStyle="overCurrentContext" id="zeU-yk-KKt" customClass="CertListVC" customModule="SMART_SB_IOS_APP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gCd-ZW-EpJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,7 +32,11 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인증서를 선택해 주세요." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D77-3V-csd">
-                                <rect key="frame" x="25" y="65" width="265" height="20.5"/>
+                                <rect key="frame" x="25" y="67" width="265" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="265" id="3GT-Zn-qVi"/>
+                                    <constraint firstAttribute="height" constant="20.5" id="NGX-Zc-UqT"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -59,17 +63,16 @@
                         <viewLayoutGuide key="safeArea" id="wUh-yb-GnL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="D77-3V-csd" firstAttribute="leading" secondItem="3FM-hh-3ux" secondAttribute="leading" id="Bxs-sF-sBb"/>
-                            <constraint firstItem="wUh-yb-GnL" firstAttribute="trailing" secondItem="D77-3V-csd" secondAttribute="trailing" constant="30" id="I0y-Sv-ysb"/>
-                            <constraint firstItem="D77-3V-csd" firstAttribute="top" secondItem="3FM-hh-3ux" secondAttribute="bottom" constant="8" symbolic="YES" id="IKz-0o-iRl"/>
+                            <constraint firstItem="pC1-Rn-hSH" firstAttribute="top" secondItem="D77-3V-csd" secondAttribute="bottom" constant="28" id="COM-Nd-lAk"/>
                             <constraint firstItem="wUh-yb-GnL" firstAttribute="trailing" secondItem="pC1-Rn-hSH" secondAttribute="trailing" constant="20" id="O7Q-J2-Ryh"/>
                             <constraint firstItem="pC1-Rn-hSH" firstAttribute="leading" secondItem="wUh-yb-GnL" secondAttribute="leading" constant="20" id="TQX-1p-wEi"/>
                             <constraint firstItem="Fyd-6z-TAf" firstAttribute="leading" secondItem="gCd-ZW-EpJ" secondAttribute="leading" id="U7u-rW-g3d"/>
-                            <constraint firstItem="pC1-Rn-hSH" firstAttribute="top" secondItem="D77-3V-csd" secondAttribute="bottom" constant="30" id="bQ0-nH-7eF"/>
+                            <constraint firstItem="D77-3V-csd" firstAttribute="leading" secondItem="wUh-yb-GnL" secondAttribute="leading" constant="25" id="doP-MP-RWx"/>
                             <constraint firstItem="Fyd-6z-TAf" firstAttribute="top" secondItem="pC1-Rn-hSH" secondAttribute="bottom" id="hGv-JU-6Ek"/>
                             <constraint firstItem="wUh-yb-GnL" firstAttribute="trailing" secondItem="Fyd-6z-TAf" secondAttribute="trailing" id="jwn-TU-7At"/>
                             <constraint firstItem="wUh-yb-GnL" firstAttribute="bottom" secondItem="Fyd-6z-TAf" secondAttribute="bottom" id="m3i-FA-TUF"/>
                             <constraint firstItem="3FM-hh-3ux" firstAttribute="top" secondItem="wUh-yb-GnL" secondAttribute="top" constant="30" id="qwS-3v-yBL"/>
+                            <constraint firstItem="D77-3V-csd" firstAttribute="top" secondItem="3FM-hh-3ux" secondAttribute="bottom" constant="10" id="tQY-Br-WX5"/>
                             <constraint firstItem="3FM-hh-3ux" firstAttribute="leading" secondItem="wUh-yb-GnL" secondAttribute="leading" constant="25" id="vc5-cM-2c0"/>
                         </constraints>
                     </view>

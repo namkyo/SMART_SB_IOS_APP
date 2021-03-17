@@ -9,6 +9,7 @@ import UIKit
 
 class CertListVC: UIViewController {
     
+    //@IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableView: UITableView!
     
     var complete:((Dictionary<String,Any>) -> Void)? = nil
@@ -19,6 +20,11 @@ class CertListVC: UIViewController {
     var certManager: CertManager?
     
     
+    @IBAction func close(_ sender: Any) {
+        self.dismiss(animated: true, completion: {
+            self.failed!("9997","취소")
+        })
+    }
     @IBAction func 닫기Button(_ sender: Any) {
         self.dismiss(animated: true, completion: {
             self.failed!("9997","취소")

@@ -11,6 +11,12 @@ import Safetoken
 
 class PinVC: UIViewController {
     
+    //닫기버튼
+    @IBAction func close(_ sender: Any) {
+        dismiss(animated: true, completion: {
+                    self.cancelHandler?()
+        })
+    }
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var hintLabel: UILabel!
     @IBOutlet weak var stackView: UIStackView!
@@ -182,11 +188,6 @@ class PinVC: UIViewController {
         })
     }
     
-    @IBAction func pressCloseBtn(_ sender: Any) {
-        dismiss(animated: true, completion: {
-                    self.cancelHandler?()
-        })
-    }
     
     
     deinit {

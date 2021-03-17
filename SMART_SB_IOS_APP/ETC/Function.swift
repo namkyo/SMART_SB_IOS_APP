@@ -149,17 +149,12 @@ class Function:NSObject {
     }
     
     class func AES256Decrypt(val:String) -> String {
-        
         var decrypted: String!
-        
         do {
-            
             let key: Data = Constants.AES.SECRET_KEY.data(using: .utf8)!
-            
             let iv: Data = Constants.AES.iv.data(using: .utf8)!
             
             let strData: Data = Data(base64Encoded: val)!
-            
             let aes = try AES256(key: key, iv: iv)
             let val = try aes.decrypt(strData)
             
@@ -204,7 +199,7 @@ class Function:NSObject {
         return encrypted
     }
     
-    class func getDataFromServer(jsonData : JSON,url:String,completeHandler: (([String: Any]) -> Void)?){
+    class func getDataFromServer(filter:String,jsonData : JSON,url:String,completeHandler: (([String: Any]) -> Void)?){
         var requestUrl = ""
         
         switch Constants.MODE {
@@ -224,7 +219,6 @@ class Function:NSObject {
         //let requestUrl = Configuration.MAIN_HTTP_URL+url
         Function.DFT_TRACE_PRINT(output: "requestUrl:",requestUrl)
         
-       
         // URL 객체 정의
         let url = URL(string: requestUrl)
 
@@ -236,7 +230,10 @@ class Function:NSObject {
         // HTTP 메시지 헤더
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-        //request.setValue(String(paramData!.count), forHTTPHeaderField: "Content-Length")
+        
+        if filter != "" {
+            request.setValue(filter, forHTTPHeaderField: "X-ES-CERT-INFO")
+        }
 
         // URLSession 객체를 통해 전송, 응답값 처리
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in

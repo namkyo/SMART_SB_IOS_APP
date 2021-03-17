@@ -44,24 +44,18 @@ class CertSignVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Log.print("CertSignVC viewDidLoad : ")
 
         setupUI()
     }
     //뷰 생성 끝나고
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        print("CertSignVC viewDidAppear : ")
+        Log.print("CertSignVC viewDidAppear : ")
         setupQwertyKeyboard()
     }
     
     private func setupUI() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
-              let index = indexPath else {
-            Log.print(message: "서버와의 통신이 원할하지 않습니다. 다시 시도해 주세요.")
-            return
-        }
-        
-        
         certNameLabel.text = certContent.getSubject()
         certGubunLabel.text = certContent.getPolicy() + "(" + certContent.getIssuerNameKorean() + ")"
         CertIssuerLabel.text = certContent.getIssuerNameKorean()
@@ -90,15 +84,13 @@ class CertSignVC: UIViewController {
                         pinStr, text in
                         Log.print("공동인증서 입력후...")
                         Log.print("공동인증서 비밀번호 enc Data: \(text)")
-                        Log.print("공동인증서 입력실명 dec Data: \(self.parameters["rbrno"] as? String)!")
+                        Log.print("공동인증서 입력실명 dec Data: \(String(describing: self.parameters["rbrno"] as? String))!")
                         
                         //전자서명
                         if self.mode == 2 {
-                            //주민번호 검증
-                            if !checkRrn(index: self.index, text: text,rrn: "TCZrYbFvH9vBQTphRq9Akd==") {
-                            //if !checkRrn(index: self.index, text: text,rrn: (self.parameters["rbrno"] as? String)!) {
+                            guard let rbrno = self.parameters["rbrno"] as? String else {
                                 self.dismiss(animated: true, completion: {
-                                    self.failed?("9999,","이용자랑 인증서 실명번호가 일치하지 않습니다.")
+                                    self.failed?("9999,","실명번호오류")
                                 })
                                 return
                             }
@@ -110,9 +102,15 @@ class CertSignVC: UIViewController {
                                 })
                                 return
                             }
+                            //주민번호 검증
+                            if !checkRrn(index: self.index, text: text,rrn: rbrno) {
+                                self.dismiss(animated: true, completion: {
+                                    self.failed?("9999,","해당인증서의 실명번호가 일치하지 않습니다.")
+                                })
+                                return
+                            }
                             
-                            
-                            resultData=self.signCert(password: text)
+                            resultData=self.signCert(passwordText: text)
                             Log.print("공동인증서 서명결과 Data: \(resultData)")
                         }
                         //스크랩핑
@@ -127,14 +125,20 @@ class CertSignVC: UIViewController {
                                 return
                             }
                             
-                            var minwon: JSON = JSON(self.parameters["MinWon_1"] as Any)
                             //주민번호 검증
-//                            if !checkRrn(index: self.index, text: text,rrn: minwon["Input"]["주민등록번호"].string!) {
-//                                self.dismiss(animated: true, completion: {
-//                                    self.failed?("9999,","이용자랑 인증서 실명번호가 일치하지 않습니다.")
-//                                })
-//                                return
-//                            }
+                            let HOME_1: JSON = JSON(parameters["HOME_1"] as Any)
+                            guard let rrn = HOME_1["Input"]["주민사업자번호"].string else {
+                                self.dismiss(animated: true, completion: {
+                                    self.failed?("9999,","실명번호가 누락됬습니다")
+                                })
+                                return
+                            }
+                            if !checkRrn(index: self.index, text: text,rrn:rrn) {
+                                self.dismiss(animated: true, completion: {
+                                    self.failed?("9999,","이용자랑 인증서 실명번호가 일치하지 않습니다.")
+                                })
+                                return
+                            }
                             
                             resultData["password"]=text
                             resultData["name"]=self.certContent?.getSubject()
@@ -151,30 +155,63 @@ class CertSignVC: UIViewController {
         
     }
 
-    private func signCert(password : String) -> Dictionary<String,String>{
+    private func signCert(passwordText : String) -> Dictionary<String,String>{
         var resultData : Dictionary<String,String> = [String:String]()
-        guard let sign_data = parameters["signData"] else {
+        guard var sign_data = parameters["signData"] as? String else {
             resultData["msg"]="전자서명누락"
             return resultData}
         Log.print("전자서명")
         
-        let signData = sign(index: index,
-                            data: sign_data as! String,
-                            password: password)
-        Log.print("sign data string: \(signData)")
+        do {
+            Log.print("===전자서명중작성중====")
+            print("index : \(index)")
+            print("sign_data : \(sign_data)")
+            print("sign_data_count : \(sign_data.count)")
+            print("passwordText : \(passwordText)")
+            
+            //1161 자리까지 끝
+//            if sign_data.count > 1024 {
+//                let endIdx: String.Index = sign_data.index(sign_data.startIndex, offsetBy: 1024)
+//                sign_data = String(sign_data[...endIdx])
+//                print("===문자열길이초과====")
+//                print("sign_data_count : \(sign_data.count)")
+//                print("sign_data : \(sign_data)")
+//            }
+            
+            //전자서명값
+            let signData = sign(index: index,
+                                data: sign_data,
+                                password: passwordText)
+//            let cmsSignData = sign(index: index,
+//                                data: sign_data as! String,
+//                                password: password)
+            let randomData = random(index: index,
+                                    password: passwordText)
+            
+            Log.print("sign data string: \(String(describing: signData))")
+            Log.print("random data string: \(String(describing: randomData))")
+            
+            resultData["crtsNm"]=certContent.getSubjectName()
+            resultData["crtsKeyInf"]=certContent.getPublicKeyString()
+            resultData["crtsDn"]=certContent.getIssuerName()
+            resultData["userCertDn"]=certContent.getSubject()
+            resultData["esgnCtns"]=signData
+            resultData["esgnMsgOrgnlCtns"]=parameters["signData"] as? String
+            resultData["vidRandom"]=randomData
+        }catch
+        {
+            resultData["crtsNm"]=certContent.getSubjectName()
+            resultData["crtsKeyInf"]=certContent.getPublicKeyString()
+            resultData["crtsDn"]=certContent.getIssuerName()
+            resultData["userCertDn"]=certContent.getSubject()
+            resultData["esgnCtns"]=""
+            resultData["esgnMsgOrgnlCtns"]=parameters["signData"] as? String
+            resultData["vidRandom"]=""
+            
+            UIApplication.shared.showAlert(message: "전자서명 오류")
+            Log.print("error")
+        }
         
-        let randomData = random(index: index,
-                                password: password)
-        Log.print("random data string: \(randomData)")
-        
-        Log.print(message: "서명 code")
-        resultData["crtsNm"]=certContent.getSubjectName()
-        resultData["crtsKeyInf"]=certContent.getPublicKeyString()
-        resultData["crtsDn"]=certContent.getIssuerName()
-        resultData["userCertDn"]=certContent.getSubject()
-        resultData["esgnCtns"]=signData
-        resultData["esgnMsgOrgnlCtns"]=parameters["signData"] as! String
-        resultData["vidRandom"]=randomData
         return resultData
     }
     
@@ -211,6 +248,17 @@ class CertSignVC: UIViewController {
                                            sourceData: data,
                                            manager: certManager)
     }
+    // Cms Sign
+    func cmsSign(index: Int32, data: String, password: String) -> String? {
+        // SignData
+        let signUtil = KeySharpProviderUtil()
+        
+        return signUtil.koscomSign(index,
+                                           password: Function.AES256Decrypt(val: password),
+                                           sourceData: data,
+                                           manager: certManager)
+    }
+    
     
     // Random Data
     func random(index: Int32, password: String) -> String? {

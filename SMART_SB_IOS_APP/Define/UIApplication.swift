@@ -219,6 +219,22 @@ extension UIApplication {
     }
     
     
+    func requestCameraPermission(completeHandler: (() -> Void)? = nil){
+          AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
+              if granted {
+                  print("Camera: 권한 허용")
+                    DispatchQueue.main.async {
+                        completeHandler!()
+                    }
+              } else {
+                  print("Camera: 권한 거부")
+                    DispatchQueue.main.async {
+                        UIApplication.shared.showAlert(message: "카메라 권한을 켜주세요")
+                    }
+              }
+          })
+      }
+    
 //    func customPINView(
 //                controller:UIViewController
 //                ,params:[String:Any] = [:]

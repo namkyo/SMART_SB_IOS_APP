@@ -13,6 +13,26 @@ class SplashVC: UIViewController {
     
     @IBOutlet weak var gifImg: UIImageView!
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        Log.print("SplashVC viewDidAppear")
+        
+        let time = DispatchTime.now() + .seconds(5)
+        
+        //위변조 결과 판단
+        DispatchQueue.main.asyncAfter(deadline: time) {
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            
+            let eversafeFilterYn :Bool = appDelegate!.eversafeFilterYn
+            Log.print("eversafeFilterYn : \(eversafeFilterYn)")
+            Log.print("위변조 탐색 결과 \(eversafeFilterYn)")
+            if !eversafeFilterYn {
+                //seletServer()
+                self.nertworkCheck()
+            }
+        }
+    }
+    
     override func loadView() {
         super.loadView()
         
@@ -25,18 +45,15 @@ class SplashVC: UIViewController {
         //로딩 gif  이미지 가동
         let imageData = try? Data(contentsOf: Bundle.main.url(forResource: "incoming", withExtension: "gif")!)
         
-        
         let advTimeGif = UIImage.gif(data: imageData!)
         gifImg!.frame.size = CGSize(width: 40, height: 20)
         gifImg.image = advTimeGif
-        
         
     }
     
     func seletServer(){
         let alert_start = UIAlertController(title: "앱 환경선택", message: "고르세요", preferredStyle: .alert)
             
-        
         let ok = UIAlertAction(title: "개발서버", style: .default, handler: {_ in
 //            Constants.MODE="D"
             self.nertworkCheck()
@@ -50,29 +67,7 @@ class SplashVC: UIViewController {
         self.present(alert_start,animated: false)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        Log.print("SplashVC viewDidAppear")
-        
-        
-        
-        let time = DispatchTime.now() + .seconds(5)
-        DispatchQueue.main.asyncAfter(deadline: time) {
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            
-            let eversafeFilterYn :Bool = appDelegate!.eversafeFilterYn
-            Log.print("eversafeFilterYn : \(eversafeFilterYn)")
-            Log.print("위변조 탐색 결과 \(eversafeFilterYn)")
-            
-            if !eversafeFilterYn {
-                //seletServer()
-                self.nertworkCheck()
-            }
-        }
-       
-        
-        
-    }
+    
     
     func nertworkCheck(){
         //인터넷 연결상태 체크

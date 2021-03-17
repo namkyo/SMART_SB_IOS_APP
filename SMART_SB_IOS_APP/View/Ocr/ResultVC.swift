@@ -160,9 +160,14 @@ class ResultVC: UIViewController {
     }
     
     @IBAction func pressNext(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: {
-            self.delegate?.successHandler(result: self.callbackData)
-        })
+        let time = DispatchTime.now() + .seconds(1)
+        IndicatorView().loading(flag: "ON")
+        DispatchQueue.main.asyncAfter(deadline: time) {
+            IndicatorView().hideProgress()
+            self.dismiss(animated: true, completion: {
+                self.delegate?.successHandler(result: self.callbackData)
+            })
+        }
     }
 }
 

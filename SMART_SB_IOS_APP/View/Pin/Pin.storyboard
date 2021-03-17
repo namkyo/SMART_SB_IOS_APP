@@ -137,17 +137,6 @@
                                     <constraint firstAttribute="height" constant="25" id="W5b-sG-Zeh"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2v-ro-lUp">
-                                <rect key="frame" x="270" y="20" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="3L6-eH-bjE"/>
-                                    <constraint firstAttribute="width" constant="30" id="ega-pi-J6r"/>
-                                </constraints>
-                                <state key="normal" image="btn_close"/>
-                                <connections>
-                                    <action selector="pressCloseBtn:" destination="JkT-E0-7Dc" eventType="touchUpInside" id="QkE-PY-zVZ"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esO-co-cBl">
                                 <rect key="frame" x="30" y="108" width="10" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
@@ -167,21 +156,32 @@
                                     <constraint firstAttribute="height" constant="220" id="Hvc-x3-DE2"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fx1-Vq-DO2">
+                                <rect key="frame" x="275" y="20" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="2mH-dm-3Zy"/>
+                                    <constraint firstAttribute="width" constant="25" id="Nyy-sc-prg"/>
+                                </constraints>
+                                <state key="normal" image="btn_close"/>
+                                <connections>
+                                    <action selector="close:" destination="JkT-E0-7Dc" eventType="touchUpInside" id="wIQ-mR-Jel"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DET-eo-mjk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cPO-K0-Qxu" firstAttribute="top" secondItem="TP9-sZ-E4L" secondAttribute="top" constant="-30" id="2ce-Ed-N9x"/>
-                            <constraint firstItem="d2v-ro-lUp" firstAttribute="top" secondItem="DET-eo-mjk" secondAttribute="top" constant="20" id="2lv-wM-paP"/>
                             <constraint firstItem="jnQ-zE-Qgz" firstAttribute="leading" secondItem="esO-co-cBl" secondAttribute="leading" id="7LL-Fd-pqe"/>
                             <constraint firstItem="esO-co-cBl" firstAttribute="leading" secondItem="DET-eo-mjk" secondAttribute="leading" constant="30" id="GR8-iW-uU8"/>
                             <constraint firstItem="DET-eo-mjk" firstAttribute="trailing" secondItem="jnQ-zE-Qgz" secondAttribute="trailing" constant="30" id="NvN-BR-zR7"/>
                             <constraint firstAttribute="trailing" secondItem="cPO-K0-Qxu" secondAttribute="trailing" constant="-50" id="Q6k-T6-aMA"/>
                             <constraint firstItem="jnQ-zE-Qgz" firstAttribute="top" secondItem="esO-co-cBl" secondAttribute="bottom" constant="20" id="SzT-1q-7qA"/>
-                            <constraint firstAttribute="trailing" secondItem="d2v-ro-lUp" secondAttribute="trailing" constant="20" id="TIW-Og-zWk"/>
                             <constraint firstItem="LfG-fh-h5l" firstAttribute="top" secondItem="jnQ-zE-Qgz" secondAttribute="bottom" constant="25" id="Wao-lE-Kmi"/>
                             <constraint firstItem="LfG-fh-h5l" firstAttribute="centerX" secondItem="TP9-sZ-E4L" secondAttribute="centerX" id="eg7-jx-lXo"/>
                             <constraint firstItem="LfG-fh-h5l" firstAttribute="top" secondItem="DET-eo-mjk" secondAttribute="top" constant="200" id="jRu-Np-OfU"/>
+                            <constraint firstItem="fx1-Vq-DO2" firstAttribute="top" secondItem="DET-eo-mjk" secondAttribute="top" constant="20" id="opw-gc-rAC"/>
+                            <constraint firstItem="DET-eo-mjk" firstAttribute="trailing" secondItem="fx1-Vq-DO2" secondAttribute="trailing" constant="20" id="tpH-Ed-xWX"/>
                         </constraints>
                     </view>
                     <connections>

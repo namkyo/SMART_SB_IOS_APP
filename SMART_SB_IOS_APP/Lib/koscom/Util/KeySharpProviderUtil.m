@@ -20,7 +20,8 @@
               sourceData:(NSString*) signSource //서명원문
                  manager:(CertManager*) manager {
     
-    char signResult[4096] = {0x00,};
+    //char signResult[4096] = {0x00,};
+    char signResult[50000] = {0x00,};
     int ret = 0;
     NSString *result = @"";
     
@@ -29,10 +30,18 @@
                           initWithData: password.UTF8String
                           length: password.length];
 
-    ret = [manager koscomSign_S:idx
-                    password:pwd
-                  signSource:signSourceData
-                  signResult:signResult];
+    //일반 코스콤서명
+//    ret = [manager koscomSign_S:idx
+//                    password:pwd
+//                  signSource:signSourceData
+//                  signResult:signResult];
+    
+    //cms 서명
+    ret = [ manager cmsSign_S:idx
+                     password:pwd
+                   signSource:signSourceData
+                  signingTime:nil
+                   signResult:signResult];
     
     if(ret > 0) {
         ks_uint8 *encodedSign = (ks_uint8 *)malloc(ret*2+1);

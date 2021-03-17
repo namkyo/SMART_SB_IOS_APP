@@ -29,6 +29,12 @@ class OcrVC: UIViewController {
             self.failed!("9997","작업을취소하였습니다")
         })
     }
+    //닫기버튼
+    @IBAction func close(_ sender: Any) {
+        self.dismiss(animated: true, completion: {
+            self.failed!("9997","작업을취소하였습니다")
+        })
+    }
     
     deinit {
         Log.print(message: "*** deinit OcrVC ***")

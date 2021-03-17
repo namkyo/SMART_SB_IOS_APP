@@ -4,6 +4,10 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>BGTaskSchedulerPermittedIdentifiers</key>
+	<array>
+		<string>kr.co.smartSB.app</string>
+	</array>
 	<key>CFBundleDisplayName</key>
 	<string>스마트저축은행 모바일뱅킹</string>
 	<key>CFBundleExecutable</key>
@@ -85,6 +89,7 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>
+		<string>processing</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
