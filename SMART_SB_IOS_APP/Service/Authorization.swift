@@ -13,8 +13,8 @@ class Authorization {
     //인증처리
     func doAuthorization(params:Dictionary<String, Any>,sf:String,ff:String,webView : WKWebView){
         let prcsDvcd    =   params["PRCS_DVCD"] as! String // T: 토큰등록(변경), R: 인증수단등록, P: 인증수행, M: mOTP등록
-        let authType    =   params["AUTH_TYPE"] as! String // O: 최종등록타입, 1: 핀번호, 2: 지문, 3: 패턴, 등록순서 1->2->3
-        let authToken   =   params["AUTH_TYPE"] as! String
+        let authType    =   params["AUTH_TYPE"] as! String// O: 최종등록타입, 1: 핀번호, 2: 지문, 3: 패턴, 등록순서 1->2->3
+        let authToken   =   params["AUTH_TOKEN"] as! String
         let authMesg    =   params["AUTH_MESG"] as! String
         let randomKey   =   params["RANDOM_KEY"] as! String
         
@@ -464,40 +464,61 @@ class Authorization {
         var resultData : Dictionary<String,Any> = [String:Any]()//기등록여부
         
         let appDelegate  = UIApplication.shared.delegate as! AppDelegate
-        guard ((appDelegate.tc?.getToken()?.uid) != nil) else {
+        let tc=appDelegate.tc
+        
+        guard ((tc?.getToken()?.uid) != nil) else {
             DataWebSend().resultWebSend(resultCd: "9990", dicParmas:resultData, resultFunc : sf ,webView: webView)
             return
         }
         
-        let authType = Int(params["AUTH_TYPE"] as! String)
-        Log.print("로그인 타입 : "+String(authType!))
-        let tc=appDelegate.tc
-        
+        let authType = params["AUTH_TYPE"] as! String
         switch authType {
-            case 0:
-                if ((tc?.getToken()?.bindPattern) != nil) {
-                    doRunPattren(params: params,sf:sf,ff:ff,webView:webView)
-                    return
-                }
-                if ((tc?.getToken()?.bindBiometric) != nil) {
-                    doRunBio(params: params,sf:sf,ff:ff,webView:webView)
-                    return
-                }
-                doRunPin(params: params,sf:sf,ff:ff,webView:webView)
+            case "0":
+//                if ((tc?.getToken()?.bindPattern) != nil) {
+//                    doRunPattren(params: params,sf:sf,ff:ff,webView:webView)
+//                    return
+//                }
+//                if ((tc?.getToken()?.bindBiometric) != nil) {
+//                    doRunBio(params: params,sf:sf,ff:ff,webView:webView)
+//                    return
+//                }
+                //doRunPin(params: params,sf:sf,ff:ff,webView:webView)
+                doLoginView(mode:"0",sf:sf,ff:ff,params: params,webView:webView)
                 break
-            case 1:
-                doRunPin(params: params,sf:sf,ff:ff,webView:webView)
+            case "1":
+               // doRunPin(params: params,sf:sf,ff:ff,webView:webView)
+                doLoginView(mode:"1",sf:sf,ff:ff,params: params,webView:webView)
                 break
-            case 2:
-                doRunBio(params: params,sf:sf,ff:ff,webView:webView)
+            case "2":
+                //doRunBio(params: params,sf:sf,ff:ff,webView:webView)
+                doLoginView(mode:"2",sf:sf,ff:ff,params: params,webView:webView)
                 break
-            case 3:
-                doRunPattren(params: params,sf:sf,ff:ff,webView:webView)
+            case "3":
+                //doRunPattren(params: params,sf:sf,ff:ff,webView:webView)
+                doLoginView(mode:"3",sf:sf,ff:ff,params: params,webView:webView)
                 break
             default:
                 Log.print("잘못된 요청")
             }
         
+    }
+    
+    func doLoginView(mode:String,sf:String,ff:String,params:Dictionary<String, Any>,webView : WKWebView){
+        let resultData : Dictionary<String,String> = [String:String]()
+        UIApplication
+            .shared
+            .LoginView(mode: mode,
+                       params: params,
+                        complete: {
+                        result in
+                            Log.print("succeces")
+                            DataWebSend().resultWebSend(resultCd: "0000", dicParmas:result, resultFunc : sf ,webView: webView)
+                        },
+                        failed:  {
+                        errCode in
+                            Log.print("cancel")
+                            DataWebSend().resultWebSend(resultCd: errCode, dicParmas:resultData, resultFunc : sf ,webView: webView)
+                        })
     }
     
     func doRegisterPin1(params:Dictionary<String, Any>,sf:String,ff:String,webView : WKWebView){
@@ -614,7 +635,6 @@ class Authorization {
     }
     func doRegisterPattern(params:Dictionary<String, Any>,sf:String,ff:String,webView : WKWebView){
         var resultData : Dictionary<String,Any> = [String:Any]()
-        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
         UIApplication
             .shared
             .PattrunView(title: "간편 로그인",
@@ -625,7 +645,6 @@ class Authorization {
                      complete: {
                         SignDataStr in
                         Log.print("completed Data:  \(SignDataStr)")
-                        
                         let authToken = params["AUTH_TOKEN"] as! String
                         resultData["AUTH_TOKEN"]=authToken
                         DataWebSend().resultWebSend(resultCd: "0000", dicParmas:resultData, resultFunc : sf ,webView: webView)

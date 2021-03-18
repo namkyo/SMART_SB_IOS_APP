@@ -61,6 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, EversafeDelegate {
     //스마트앱 모듈
     var ac=SafetokenFsbAuthClient.sharedInstance()
     
+    var backgroundTask : UIBackgroundTaskIdentifier? ;
+    
     /**
      앱 초기설정
      */
@@ -78,7 +80,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, EversafeDelegate {
         
         setUserDefaults()
         setPush(application)
-        
         
         
         
@@ -210,18 +211,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, EversafeDelegate {
     
     // 실행 - (홈버튼) -> 백그라운드
     func applicationDidEnterBackground(_ application: UIApplication) {
+        backgroundTask=UIApplication.shared.beginBackgroundTask(expirationHandler: {
+            UIApplication.shared.endBackgroundTask(self.backgroundTask!)
+        })
     }
     
     // 중지 - (앱 재실행) -> 실행
     func applicationWillEnterForeground(_ application: UIApplication) {
         //스샷방지
         bgTaskView.removeFromSuperview()
+        UIApplication.shared.endBackgroundTask(self.backgroundTask!)
+
         
     }
     // 중지 - (백그라운드 재실행) -> 실행
     func applicationDidBecomeActive(_ application: UIApplication){
         //스샷방지
         bgTaskView.removeFromSuperview()
+        UIApplication.shared.endBackgroundTask(self.backgroundTask!)
+
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

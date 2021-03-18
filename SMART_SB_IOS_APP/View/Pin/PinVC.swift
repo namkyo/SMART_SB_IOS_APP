@@ -14,7 +14,7 @@ class PinVC: UIViewController {
     //닫기버튼
     @IBAction func close(_ sender: Any) {
         dismiss(animated: true, completion: {
-                    self.cancelHandler?()
+                    //self.cancelHandler?()
         })
     }
     @IBOutlet weak var titleLabel: UILabel!
@@ -234,7 +234,7 @@ extension PinVC: ESSecureTextFieldDelegate {
     //취소 버튼입력시
     func secureTextFieldDidCancel(_ secureTextField: ESSecureTextField!) {
         dismiss(animated: true, completion: {
-                    self.cancelHandler?()
+                    //self.cancelHandler?()
         })
     }
     

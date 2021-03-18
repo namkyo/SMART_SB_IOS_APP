@@ -61,8 +61,8 @@ class PatternVC: UIViewController {
         patternView = PatternView(delegate: self)
         
         patternView?.normalNodeColor = #colorLiteral(red: 0.7607843137, green: 0.7607843137, blue: 0.7607843137, alpha: 1) /// 기본 point color
-        patternView?.pathColor = #colorLiteral(red: 0, green: 0.6235294118, blue: 0.9098039216, alpha: 1) /// 경로 color
-        patternView?.selectedNodeColor = #colorLiteral(red: 0, green: 0.6235294118, blue: 0.9098039216, alpha: 1) /// 선택된 point color
+        patternView?.pathColor = #colorLiteral(red: 0.8235294118, green: 0.8549019608, blue: 0.9647058824, alpha: 1) /// 경로 color
+        patternView?.selectedNodeColor = #colorLiteral(red: 0.1254901961, green: 0.04705882353, blue: 0.2862745098, alpha: 1) /// 선택된 point color
         patternView?.layoutView()
         
         self.view.addSubview(patternView!)
@@ -186,7 +186,7 @@ class PatternVC: UIViewController {
     
     @IBAction func pressClose(_ sender: Any) {
         self.dismiss(animated: true, completion: {
-            self.failed?("close")
+            //self.failed?("close")
         })
     }
     

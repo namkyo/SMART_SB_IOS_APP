@@ -95,6 +95,20 @@ extension UIApplication {
         topView?.present(vc, animated: true, completion: nil)
     }
     
+    func LoginView(mode:String,
+                 params:[String:Any] = [:],
+                 complete: ((Dictionary<String,String>) -> Void)? = nil,
+                 failed: ((String) -> Void)? = nil) {
+        let vc = LoginVC.instantiate(storyboard: "Login")
+        vc.login_params=params
+        vc.login_complete = complete
+        vc.login_failed = failed
+        vc.mode=mode
+        let topView = UIApplication.topViewController()
+        topView?.modalPresentationStyle = .fullScreen
+        topView?.present(vc, animated: true, completion: nil)
+    }
+    
     func PattrunView(title:String,
                  sub_title:String,
                  hint:String,

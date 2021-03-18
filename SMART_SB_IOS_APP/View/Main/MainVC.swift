@@ -130,6 +130,7 @@ class MainVC: UIViewController,UIImagePickerControllerDelegate, UINavigationCont
             webView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
             webView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
         }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
