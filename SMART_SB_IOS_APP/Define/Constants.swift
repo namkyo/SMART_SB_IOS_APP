@@ -9,8 +9,8 @@ import Foundation
 
 enum Constants {
     
-    static let MODE: String = "R"
-    static let EVERSAFE_MODE = true
+    static let MODE: String = "D"
+    static let EVERSAFE_MODE = false
     
     /*
      *  검증설정 checkPinValidation

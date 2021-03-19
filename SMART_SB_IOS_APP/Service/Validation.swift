@@ -15,7 +15,7 @@ class Validation {
         let json2:JSON  = ["custNo":custNo]
         Function.getDataFromServer(filter: token, jsonData: json2, url: semdUrl,completeHandler: {
                 resultJson in
-                let result=resultJson["result"] as! Int == 1 ? true : false
+                let result=resultJson["result"] as? Int == 1 ? true : false
                 //let type=resultJson["type"] as? String
                 let msg=resultJson["msg"] as? String
             

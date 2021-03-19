@@ -381,16 +381,25 @@
         // 5. 인식 엔진 해제(해제하지 않으면 메모리가 누수되므로 반드시 해야함)
         [crControl releaseRecognize];
         
+                
+        
         if(nRet == -1) {
-            [self showAlert:0
-                    message:@"인식엔진이 초기화되지 않았습니다! 인식엔진 초기화 후 다시 시도해 주십시오."
-               leftBtnTitle:nil
-              rightBtnTitle:@"확인"];
+            [self dismissViewControllerAnimated:YES completion:^{
+                [self showAlert:0
+                        message:@"인식엔진이 초기화되지 않았습니다! 인식엔진 초기화 후 다시 시도해 주십시오."
+                   leftBtnTitle:nil
+                  rightBtnTitle:@"확인"];
+            }];
         } else { // 주민등록증(1), 운전면허증(3) 이외(2:주민등록증 뒷면, 4:운전면허증 뒷면 등등)의 리턴값은 0보다 크더라도 모두 인식실패로 분류.
-            [self showAlert:0
-                    message:@"인식에 실패하였습니다! 다시 시도해 주십시오."
-               leftBtnTitle:nil
-              rightBtnTitle:@"확인"];
+            
+                [self dismissViewControllerAnimated:YES completion:^{
+                    
+                  [self showAlert:0
+                          message:@"인식에 실패하였습니다! 다시 시도해 주십시오."
+                     leftBtnTitle:nil
+                    rightBtnTitle:@"확인"];
+                    
+              }];
         }
         
     }
