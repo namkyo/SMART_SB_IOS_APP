@@ -71,7 +71,7 @@ class CertSignVC: UIViewController {
     
     private func setupQwertyKeyboard() {
         parameters["HINT"]="공동인증서 비밀번호"
-        parameters["MAX"]="14"
+        parameters["MAX"]="52"
         parameters["MIN"]="6"
         parameters["KEY"]=""
         var resultData : Dictionary<String,String> = [String:String]()
